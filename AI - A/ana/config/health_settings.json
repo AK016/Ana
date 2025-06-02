@@ -1,0 +1,35 @@
+{
+  "health_integration": {
+    "enabled": true,
+    "client_id": "",
+    "client_secret": "",
+    "access_token": "",
+    "refresh_token": "",
+    "token_expiry": 0,
+    "sync_interval": 3600,
+    "providers": {
+      "samsung_health": {
+        "enabled": true,
+        "api_endpoint": "https://api.health.samsung.com/v1/"
+      },
+      "google_fit": {
+        "enabled": false,
+        "api_endpoint": "https://www.googleapis.com/fitness/v1/"
+      },
+      "apple_health": {
+        "enabled": false
+      }
+    },
+    "data_types": {
+      "steps": true,
+      "sleep": true,
+      "heart_rate": true,
+      "stress": true,
+      "weight": false,
+      "blood_pressure": false,
+      "blood_glucose": false,
+      "water": false,
+      "nutrition": false
+    }
+  }
+} 

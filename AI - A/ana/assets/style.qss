@@ -1,0 +1,324 @@
+/* Ana AI Assistant - Cyberpunk Style Sheet */
+
+/* Global Styles */
+* {
+    font-family: 'Rajdhani', 'Orbitron', sans-serif;
+    color: #FFFFFF;
+}
+
+QMainWindow {
+    background-color: #091428;
+}
+
+QWidget {
+    background-color: transparent;
+}
+
+QScrollBar:vertical {
+    border: none;
+    background: rgba(10, 14, 23, 0.2);
+    width: 10px;
+    margin: 0px;
+}
+
+QScrollBar::handle:vertical {
+    background: rgba(0, 229, 255, 0.7);
+    min-height: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::add-line:vertical, QScrollBar::sub-line:vertical {
+    height: 0px;
+}
+
+QScrollBar:horizontal {
+    border: none;
+    background: rgba(10, 14, 23, 0.2);
+    height: 10px;
+    margin: 0px;
+}
+
+QScrollBar::handle:horizontal {
+    background: rgba(0, 229, 255, 0.7);
+    min-width: 20px;
+    border-radius: 5px;
+}
+
+QScrollBar::add-line:horizontal, QScrollBar::sub-line:horizontal {
+    width: 0px;
+}
+
+/* Sidebar Styles */
+#sidebar {
+    background-color: #0A0E17;
+    border-right: 1px solid #00E5FF;
+    background-image: url(assets/images/sidebar_bg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+#sidebar_btn_tasks, #sidebar_btn_memory, #sidebar_btn_calendar,
+#sidebar_btn_health, #sidebar_btn_music, #sidebar_btn_developer {
+    background-color: rgba(0, 20, 40, 0.5);
+    border: 1px solid #00E5FF;
+    border-radius: 10px;
+    text-align: left;
+    color: #00E5FF;
+}
+
+#sidebar_btn_tasks:hover, #sidebar_btn_memory:hover, #sidebar_btn_calendar:hover,
+#sidebar_btn_health:hover, #sidebar_btn_music:hover, #sidebar_btn_developer:hover {
+    background-color: rgba(0, 229, 255, 0.15);
+    border: 1px solid #00FFF8;
+}
+
+#sidebar_btn_tasks:pressed, #sidebar_btn_memory:pressed, #sidebar_btn_calendar:pressed,
+#sidebar_btn_health:pressed, #sidebar_btn_music:pressed, #sidebar_btn_developer:pressed {
+    background-color: rgba(0, 229, 255, 0.25);
+}
+
+/* Content Container */
+#content_container {
+    background-color: #091428;
+    background-image: url(assets/images/bg_pattern.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Character Container */
+#character_container {
+    background-color: rgba(9, 20, 40, 0.9);
+    border-left: 1px solid #00E5FF;
+    background-image: url(assets/images/character_bg.png);
+    background-position: center;
+    background-repeat: no-repeat;
+}
+
+/* Message Display */
+#message_display {
+    color: #00E5FF;
+    font-size: 18px;
+    padding: 20px;
+    background-color: rgba(0, 20, 40, 0.7);
+    border-radius: 15px;
+    border: 1px solid #00E5FF;
+}
+
+/* Microphone Button */
+#mic_button {
+    background-color: rgba(0, 229, 255, 0.2);
+    border: 2px solid #00E5FF;
+    border-radius: 30px;
+}
+
+#mic_button:hover {
+    background-color: rgba(0, 229, 255, 0.3);
+    border: 2px solid #00FFF8;
+}
+
+#mic_button:pressed {
+    background-color: rgba(0, 229, 255, 0.4);
+}
+
+/* Chat Tab */
+#chat_input {
+    background-color: rgba(10, 14, 23, 0.7);
+    border: 1px solid #00E5FF;
+    border-radius: 10px;
+    padding: 10px;
+    color: white;
+    font-size: 14px;
+}
+
+#chat_history {
+    background-color: rgba(10, 14, 23, 0.5);
+    border: 1px solid #00E5FF;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.user_message {
+    background-color: rgba(0, 229, 255, 0.1);
+    border: 1px solid #00E5FF;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+.assistant_message {
+    background-color: rgba(10, 14, 23, 0.7);
+    border: 1px solid #00E5FF;
+    border-radius: 10px;
+    padding: 10px;
+    margin-bottom: 10px;
+}
+
+/* Tasks Tab */
+#tasks_list {
+    background-color: rgba(10, 14, 23, 0.5);
+    border: 1px solid #00E5FF;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+.task_item {
+    background-color: rgba(10, 14, 23, 0.7);
+    border: 1px solid #00E5FF;
+    border-radius: 5px;
+    padding: 10px;
+    margin-bottom: 5px;
+}
+
+.task_completed {
+    background-color: rgba(0, 229, 255, 0.1);
+    text-decoration: line-through;
+}
+
+/* Calendar Tab */
+#calendar_widget {
+    background-color: rgba(10, 14, 23, 0.5);
+    border: 1px solid #00E5FF;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#calendar_widget QAbstractItemView {
+    background-color: rgba(10, 14, 23, 0.7);
+    selection-background-color: #00E5FF;
+    selection-color: #000000;
+}
+
+/* Music Tab */
+#music_player {
+    background-color: rgba(10, 14, 23, 0.5);
+    border: 1px solid #00E5FF;
+    border-radius: 10px;
+    padding: 10px;
+}
+
+#music_controls QPushButton {
+    background-color: rgba(0, 229, 255, 0.2);
+    border: 1px solid #00E5FF;
+    border-radius: 15px;
+    min-width: 30px;
+    min-height: 30px;
+}
+
+#music_controls QPushButton:hover {
+    background-color: rgba(0, 229, 255, 0.3);
+}
+
+#music_slider {
+    height: 10px;
+}
+
+#music_slider::groove:horizontal {
+    background: rgba(10, 14, 23, 0.7);
+    height: 8px;
+    border-radius: 4px;
+}
+
+#music_slider::handle:horizontal {
+    background: #00E5FF;
+    width: 16px;
+    margin-top: -4px;
+    margin-bottom: -4px;
+    border-radius: 8px;
+}
+
+#music_slider::sub-page:horizontal {
+    background: #00E5FF;
+    border-radius: 4px;
+}
+
+/* Developer Tab */
+#dev_console {
+    background-color: rgba(0, 0, 0, 0.7);
+    border: 1px solid #00E5FF;
+    border-radius: 5px;
+    color: #00FF00;
+    font-family: 'Courier New', monospace;
+    padding: 10px;
+}
+
+#dev_tools QPushButton {
+    background-color: rgba(0, 229, 255, 0.2);
+    border: 1px solid #00E5FF;
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+#dev_tools QPushButton:hover {
+    background-color: rgba(0, 229, 255, 0.3);
+}
+
+/* Settings Tab */
+#settings_container {
+    background-color: rgba(10, 14, 23, 0.5);
+    border: 1px solid #00E5FF;
+    border-radius: 10px;
+    padding: 20px;
+}
+
+QLabel[objectName^="setting_label"] {
+    color: #00E5FF;
+    font-size: 14px;
+    font-weight: bold;
+}
+
+QComboBox {
+    background-color: rgba(10, 14, 23, 0.7);
+    border: 1px solid #00E5FF;
+    border-radius: 5px;
+    padding: 5px;
+    min-width: 100px;
+}
+
+QComboBox::drop-down {
+    subcontrol-origin: padding;
+    subcontrol-position: center right;
+    width: 20px;
+    border-left: 1px solid #00E5FF;
+}
+
+QComboBox QAbstractItemView {
+    background-color: rgba(10, 14, 23, 0.9);
+    border: 1px solid #00E5FF;
+    selection-background-color: #00E5FF;
+    selection-color: #000000;
+}
+
+QSlider::groove:horizontal {
+    background: rgba(10, 14, 23, 0.7);
+    height: 8px;
+    border-radius: 4px;
+}
+
+QSlider::handle:horizontal {
+    background: #00E5FF;
+    width: 16px;
+    margin-top: -4px;
+    margin-bottom: -4px;
+    border-radius: 8px;
+}
+
+QSlider::sub-page:horizontal {
+    background: #00E5FF;
+    border-radius: 4px;
+}
+
+QCheckBox::indicator {
+    width: 16px;
+    height: 16px;
+    border: 1px solid #00E5FF;
+    border-radius: 3px;
+}
+
+QCheckBox::indicator:checked {
+    background-color: #00E5FF;
+    image: url(assets/icons/check.png);
+}
+
+QCheckBox::indicator:unchecked {
+    background-color: rgba(10, 14, 23, 0.7);
+} 

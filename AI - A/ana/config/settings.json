@@ -1,0 +1,82 @@
+{
+  "assistant": {
+    "name": "Ana",
+    "wake_word": "Ana",
+    "version": "1.0.0",
+    "self_evolution": {
+      "enabled": true,
+      "auto_update": true
+    },
+    "openai": {
+      "enabled": true,
+      "api_key": "YOUR_OPENAI_API_KEY",
+      "model": "gpt-3.5-turbo"
+    }
+  },
+  "voice": {
+    "elevenlabs": {
+      "api_key": "YOUR_ELEVENLABS_API_KEY",
+      "voice_ids": {
+        "en": "6JsmTroalVewG1gA6Jmw",
+        "hi": "ryIIztHPLYSJ74ueXxnO"
+      }
+    },
+    "porcupine": {
+      "access_key": "YOUR_PORCUPINE_ACCESS_KEY"
+    },
+    "audio": {
+      "sample_rate": 16000,
+      "chunk_size": 1024
+    }
+  },
+  "github": {
+    "enabled": true,
+    "username": "YOUR_GITHUB_USERNAME",
+    "email": "YOUR_GITHUB_EMAIL",
+    "token": "YOUR_GITHUB_TOKEN",
+    "repo_url": "https://github.com/yourusername/your-ana-repo.git",
+    "main_branch": "main",
+    "auto_push": true,
+    "sync_interval": 3600,
+    "feature_branches": true,
+    "create_pull_requests": true
+  },
+  "features": {
+    "wake_word": {
+      "enabled": true,
+      "sensitivity": 0.7
+    },
+    "facial_recognition": {
+      "enabled": true,
+      "recognition_interval": 0.5,
+      "emotion_detection": true
+    },
+    "gestures": {
+      "enabled": true,
+      "blink_interval": 5.0,
+      "idle_animations": true,
+      "talking_animations": true
+    },
+    "multilingual": {
+      "enabled": true,
+      "default_language": "en",
+      "supported_languages": ["en", "hi"]
+    }
+  },
+  "ui": {
+    "theme": "cyberpunk",
+    "color_scheme": "dark",
+    "animation_level": "high",
+    "font_size": "medium"
+  },
+  "storage": {
+    "memory_path": "data/memory.db",
+    "conversation_history_length": 50,
+    "auto_backup": true
+  },
+  "system": {
+    "logging_level": "info",
+    "startup_sound": true,
+    "idle_timeout": 300
+  }
+} 

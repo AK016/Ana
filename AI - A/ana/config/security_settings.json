@@ -1,0 +1,41 @@
+{
+  "security": {
+    "encryption_enabled": true,
+    "permissions": {
+      "file_access": "owner_only",
+      "api_credentials": "encrypted",
+      "conversation_history": "encrypted",
+      "user_data": "encrypted",
+      "health_data": "encrypted"
+    },
+    "privacy": {
+      "store_conversations": true,
+      "max_conversation_history": 1000,
+      "anonymize_user_data": true,
+      "api_privacy_headers": true,
+      "local_only": true,
+      "disable_telemetry": true
+    },
+    "api_privacy": {
+      "openai": {
+        "add_no_store_instruction": true,
+        "anonymize_user_id": true,
+        "remove_pii": true
+      },
+      "elevenlabs": {
+        "disable_voice_cloning": true,
+        "disable_sample_sharing": true
+      },
+      "github": {
+        "use_token_auth_only": true,
+        "anonymize_commits": false
+      }
+    },
+    "audit": {
+      "enable_audit_log": true,
+      "log_api_calls": true,
+      "periodic_audit": true,
+      "audit_interval_days": 7
+    }
+  }
+} 
