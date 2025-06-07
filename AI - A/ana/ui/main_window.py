@@ -12,15 +12,16 @@ from PyQt5.QtWidgets import (
     QLineEdit, QTextEdit, QScrollArea, QTabWidget, QGraphicsDropShadowEffect
 )
 
-from ui.chat_tab import ChatTab
-from ui.tasks_tab import TasksTab
-from ui.calendar_tab import CalendarTab
-from ui.music_tab import MusicTab
-from ui.health_tab import HealthTab
-from ui.settings_tab import SettingsTab
-from ui.dev_tab import DeveloperTab
-from ui.character_view import CharacterView
-from ui.full_screen_character import FullScreenCharacter, BackgroundType
+from ana.ui.chat_tab import ChatTab
+from ana.ui.tasks_tab import TasksTab
+from ana.ui.calendar_tab import CalendarTab
+from ana.ui.music_tab import MusicTab
+from ana.ui.health_tab import HealthTab
+from ana.ui.settings_tab import SettingsTab
+from ana.ui.dev_tab import DeveloperTab
+from ana.ui.character_view import CharacterView
+from ana.ui.full_screen_character import FullScreenCharacter, BackgroundType
+from ana.ui.background_manager import BackgroundManager
 
 logger = logging.getLogger('Ana.MainWindow')
 
@@ -36,6 +37,14 @@ class MainWindow(QMainWindow):
         self._setup_connections()
         self._load_style()
         self._apply_theme()
+        
+        # Set up background manager
+        self.background_manager = BackgroundManager(settings)
+        self.background_manager.background_changed.connect(self._on_background_changed)
+        
+        # Set window properties
+        self.setWindowTitle("Ana AI Assistant")
+        self.resize(1200, 800)
         
         logger.info("Main window initialized")
     
@@ -328,6 +337,26 @@ class MainWindow(QMainWindow):
         
         # Connect face detection
         self.assistant.add_callback("face_detected", self._on_face_detected)
+        
+        # Connect chat input to message sending
+        self.chat_input.returnPressed.connect(self._on_send_message)
+        self.send_button.clicked.connect(self._on_send_message)
+        
+        # Connect assistant signals
+        self.assistant.message_received.connect(self._on_assistant_message)
+        self.assistant.listening_changed.connect(self._on_listening_changed)
+        self.assistant.processing_changed.connect(self._on_processing_changed)
+        self.assistant.speaking_changed.connect(self._on_speaking_changed)
+        
+        # Connect menu actions
+        self.action_settings.triggered.connect(self._on_show_settings)
+        self.action_exit.triggered.connect(self.close)
+        self.action_fullscreen_character.triggered.connect(self._on_show_fullscreen)
+        
+        # Connect button actions
+        self.theme_button.clicked.connect(self._on_toggle_theme)
+        self.help_button.clicked.connect(self._on_show_help)
+        self.full_screen_button.clicked.connect(self._on_show_fullscreen)
     
     def _on_assistant_speaking(self):
         """Handle assistant speaking event"""
@@ -532,12 +561,49 @@ class MainWindow(QMainWindow):
         
         self.setPalette(dark_palette)
     
+    def _on_send_message(self):
+        """Handle sending a message to the assistant"""
+        message = self.chat_input.text().strip()
+        if not message:
+            return
+            
+        # Clear the input
+        self.chat_input.clear()
+        
+        # Add the message to the chat display
+        self._add_user_message(message)
+        
+        # Send the message to the assistant
+        self.assistant.send_message(message)
+        
+        # Analyze message for mood and update background manager
+        self.background_manager.analyze_message(message)
+    
+    def _on_assistant_message(self, message):
+        """Handle receiving a message from the assistant"""
+        # Add the message to the chat display
+        self._add_assistant_message(message)
+        
+        # Analyze the assistant's response for mood
+        self.background_manager.analyze_message(message)
+    
+    def _on_background_changed(self, bg_type, params):
+        """Handle background change events"""
+        # Update full screen character background if visible
+        if self.full_screen_character and self.full_screen_character.isVisible():
+            self.full_screen_character.set_background(bg_type, **params)
+    
     def closeEvent(self, event):
         """Handle window close event"""
-        # Close fullscreen character if open
-        if self.fullscreen_character:
-            self.fullscreen_character.close()
-            
-        # Properly shut down the assistant
-        self.assistant.shutdown()
-        event.accept() 
+        # Shut down background manager
+        if hasattr(self, 'background_manager'):
+            self.background_manager.stop()
+        
+        # Clean up any resources
+        if self.full_screen_character:
+            self.full_screen_character.close()
+        
+        # Accept the close event
+        event.accept()
+        
+        logger.info("Main window closed") 

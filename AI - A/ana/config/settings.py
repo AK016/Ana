@@ -53,7 +53,20 @@ def load_settings() -> Dict[str, Any]:
         "ui": {
             "theme": "cyberpunk",
             "color_scheme": "dark",
-            "enable_animations": True
+            "enable_animations": True,
+            "accent_color": "#00E5FF",
+            "secondary_color": "#FF3C78"
+        },
+        "security": {
+            "require_google_login": True,
+            "allowed_domains": [],  # Empty means all domains are allowed
+            "session_timeout_minutes": 60,
+            "auto_lock": False
+        },
+        "user": {
+            "email": "",
+            "name": "",
+            "picture": ""
         }
     }
     

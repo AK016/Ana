@@ -7,6 +7,7 @@ import random
 import logging
 import requests
 import json
+import math
 from enum import Enum
 from typing import Dict, List, Any, Optional, Tuple
 
@@ -21,10 +22,10 @@ from PyQt5.QtCore import (
 )
 from PyQt5.QtGui import (
     QPixmap, QPainter, QColor, QPen, QBrush, QRadialGradient,
-    QLinearGradient, QFont, QIcon, QImage
+    QLinearGradient, QFont, QIcon, QImage, QPainterPath
 )
 
-from ui.character_view import CharacterView
+from ana.ui.character_view import CharacterView
 
 logger = logging.getLogger('Ana.FullScreenCharacter')
 
@@ -243,32 +244,41 @@ class FullScreenCharacter(QDialog):
                 })
     
     def set_background(self, bg_type: BackgroundType, **kwargs):
-        """
-        Set the background type and parameters
+        """Set the background type and parameters"""
+        if not isinstance(bg_type, BackgroundType):
+            # Convert string to enum if needed
+            try:
+                bg_type = BackgroundType(bg_type)
+            except (ValueError, TypeError):
+                logger.warning(f"Invalid background type: {bg_type}, using GRADIENT")
+                bg_type = BackgroundType.GRADIENT
         
-        Args:
-            bg_type: Background type
-            **kwargs: Additional parameters for the background
-        """
         self.background_type = bg_type
         
-        # Process additional parameters
-        if "color" in kwargs:
-            self.background_color = kwargs["color"]
+        # Process kwargs
+        if 'time_of_day' in kwargs:
+            self.time_of_day = kwargs['time_of_day']
         
-        if "weather" in kwargs:
-            self.weather_condition = kwargs["weather"]
-            # Reinitialize weather particles
-            self.weather_particles = []
+        if 'weather' in kwargs:
+            self.weather_condition = kwargs['weather']
+        
+        if 'custom_path' in kwargs:
+            self.custom_background_path = kwargs['custom_path']
+        
+        if 'gradient_colors' in kwargs:
+            self.gradient_colors = kwargs['gradient_colors']
+        
+        # Reset particles if background changes
+        if bg_type == BackgroundType.CYBERPUNK_CITY:
             self._init_particles()
+        elif bg_type == BackgroundType.MATRIX:
+            self._init_matrix_effect()
+        elif bg_type == BackgroundType.WEATHER:
+            self._init_weather_particles()
+            
+        logger.info(f"Background set to {bg_type.value} with time of day: {self.time_of_day}, weather: {self.weather_condition}")
         
-        if "custom_path" in kwargs:
-            self.custom_background_path = kwargs["custom_path"]
-        
-        if "time_of_day" in kwargs:
-            self.time_of_day = kwargs["time_of_day"]
-        
-        # Update background
+        # Trigger a repaint
         self.update()
     
     def set_message(self, message: str):
@@ -295,58 +305,28 @@ class FullScreenCharacter(QDialog):
         self.character_view.set_emotion(emotion)
     
     def update_animation(self):
-        """Update animation parameters"""
-        # Update cyberpunk city lights
-        for particle in self.particle_positions:
-            # Update blink effect
-            particle['opacity'] += particle['blink_speed'] * particle['blink_direction']
-            
-            if particle['opacity'] >= 1.0:
-                particle['opacity'] = 1.0
-                particle['blink_direction'] = -1
-            elif particle['opacity'] <= 0.2:
-                particle['opacity'] = 0.2
-                particle['blink_direction'] = 1
+        """Update animation state for the next frame"""
+        # Only update particles if visible to save CPU
+        if not self.isVisible():
+            return
         
-        # Update matrix columns
-        for column in self.matrix_columns:
-            column['y'] += column['speed']
-            
-            # Reset if off screen
-            if column['y'] > self.height():
-                column['y'] = random.randint(-500, -50)
-                column['chars'] = [random.choice("01") for _ in range(column['length'])]
-        
-        # Update weather particles
         width, height = self.width(), self.height()
         
-        for particle in self.weather_particles:
-            if particle['type'] == 'rain':
-                # Move rain down
-                particle['y'] += particle['speed']
-                
-                # Reset if off screen
-                if particle['y'] > height:
-                    particle['y'] = random.randint(-100, -10)
-                    particle['x'] = random.randint(0, width)
-                    
-            elif particle['type'] == 'snow':
-                # Move snow down with drift
-                particle['y'] += particle['speed']
-                particle['x'] += particle['drift']
-                
-                # Add some randomness to drift
-                particle['drift'] += random.uniform(-0.1, 0.1)
-                if abs(particle['drift']) > 1:
-                    particle['drift'] *= 0.9
-                
-                # Reset if off screen
-                if particle['y'] > height or particle['x'] < -10 or particle['x'] > width + 10:
-                    particle['y'] = random.randint(-100, -10)
-                    particle['x'] = random.randint(0, width)
-                    particle['drift'] = random.uniform(-1, 1)
+        # Update based on background type
+        if self.background_type == BackgroundType.CYBERPUNK_CITY:
+            self._update_cyberpunk_particles(width, height)
+            
+        elif self.background_type == BackgroundType.MATRIX:
+            self._update_matrix_columns(width, height)
+            
+        elif self.background_type == BackgroundType.WEATHER:
+            self._update_weather_particles(width, height)
         
-        # Trigger repaint
+        # Update character animation
+        if self.character_view:
+            self.character_view.update_animation()
+        
+        # Request a repaint
         self.update()
     
     def paintEvent(self, event):
@@ -507,6 +487,13 @@ class FullScreenCharacter(QDialog):
             gradient.setColorAt(0.5, QColor(200, 80, 50))  # Orange in middle
             gradient.setColorAt(1, QColor(250, 150, 50))  # Yellow at bottom
             
+        elif self.time_of_day == "morning":
+            # Morning with some pinks/oranges
+            gradient = QLinearGradient(0, 0, 0, height)
+            gradient.setColorAt(0, QColor(100, 150, 250))  # Blue at top
+            gradient.setColorAt(0.7, QColor(230, 190, 160))  # Pinkish in middle
+            gradient.setColorAt(1, QColor(250, 220, 180))  # Orange/yellow at bottom
+            
         else:  # day
             if self.weather_condition in ["clear", "few clouds"]:
                 # Clear day
@@ -543,22 +530,219 @@ class FullScreenCharacter(QDialog):
         
         # Draw weather particles
         for particle in self.weather_particles:
+            painter.setOpacity(particle['opacity'])
+            
             if particle['type'] == 'rain':
                 # Draw rain drops
                 painter.setPen(QPen(QColor(200, 230, 255, 180), 1))
                 painter.drawLine(
                     particle['x'], particle['y'],
-                    particle['x'], particle['y'] + particle['length']
+                    particle['x'] - 1, particle['y'] + particle['size']
                 )
                 
             elif particle['type'] == 'snow':
                 # Draw snowflakes
-                painter.setBrush(QBrush(QColor(255, 255, 255, 200)))
                 painter.setPen(Qt.NoPen)
+                painter.setBrush(QBrush(QColor(255, 255, 255, 220)))
                 painter.drawEllipse(
-                    particle['x'], particle['y'],
+                    particle['x'] - particle['size'] / 2,
+                    particle['y'] - particle['size'] / 2,
                     particle['size'], particle['size']
                 )
+                
+            elif particle['type'] == 'cloud':
+                # Draw clouds
+                painter.setPen(Qt.NoPen)
+                cloud_color = QColor(255, 255, 255, int(40 * particle['opacity']))
+                painter.setBrush(QBrush(cloud_color))
+                
+                # Draw a series of circles to form a cloud
+                center_x, center_y = particle['x'], particle['y']
+                cloud_width = particle['size'] * 5
+                
+                # Main cloud body (larger circles)
+                painter.drawEllipse(center_x - cloud_width/4, center_y, cloud_width/2, cloud_width/4)
+                painter.drawEllipse(center_x, center_y - cloud_width/8, cloud_width/2, cloud_width/4)
+                painter.drawEllipse(center_x + cloud_width/4, center_y, cloud_width/2, cloud_width/4)
+                
+            elif particle['type'] == 'lightning':
+                # Draw lightning bolt
+                painter.setPen(QPen(QColor(255, 255, 100, 200), 2))
+                
+                # Draw a zigzag line for lightning
+                path = QPainterPath()
+                path.moveTo(particle['x'], particle['y'])
+                
+                segment_length = particle['size'] / 4
+                for i in range(4):
+                    next_x = particle['x'] + random.uniform(-15, 15)
+                    next_y = particle['y'] + segment_length * (i + 1)
+                    path.lineTo(next_x, next_y)
+                
+                painter.drawPath(path)
+            
+            elif particle['type'] == 'star':
+                # Draw stars in night sky
+                size = particle['size']
+                x, y = particle['x'], particle['y']
+                
+                # Twinkling effect
+                twinkle = (math.sin(time.time() * particle['speed'] + particle['offset']) + 1) / 2
+                brightness = 100 + int(155 * twinkle)
+                
+                painter.setPen(Qt.NoPen)
+                painter.setBrush(QBrush(QColor(255, 255, 255, brightness)))
+                painter.drawEllipse(x - size/2, y - size/2, size, size)
+        
+        painter.setOpacity(1.0)
+    
+    def _init_weather_particles(self):
+        """Initialize weather particles based on condition"""
+        width, height = self.width(), self.height()
+        self.weather_particles = []
+        
+        if self.weather_condition in ['rain', 'drizzle']:
+            # Create rain drops
+            for _ in range(100):
+                self.weather_particles.append({
+                    'type': 'rain',
+                    'x': random.randint(0, width),
+                    'y': random.randint(0, height),
+                    'size': random.randint(7, 15),
+                    'speed': random.uniform(0.5, 2.0),
+                    'opacity': random.uniform(0.3, 0.8)
+                })
+                
+        elif self.weather_condition in ['thunderstorm']:
+            # Create rain and lightning
+            for _ in range(80):
+                self.weather_particles.append({
+                    'type': 'rain',
+                    'x': random.randint(0, width),
+                    'y': random.randint(0, height),
+                    'size': random.randint(7, 15),
+                    'speed': random.uniform(1.0, 2.5),
+                    'opacity': random.uniform(0.3, 0.8)
+                })
+            
+            # Add a few lightning bolts
+            for _ in range(3):
+                self.weather_particles.append({
+                    'type': 'lightning',
+                    'x': random.randint(int(width * 0.2), int(width * 0.8)),
+                    'y': 0,
+                    'size': random.randint(80, 150),
+                    'speed': 0,
+                    'opacity': 0,  # Start invisible, will flash
+                    'active': False,
+                    'last_flash': 0
+                })
+                
+        elif self.weather_condition in ['snow']:
+            # Create snowflakes
+            for _ in range(70):
+                size = random.uniform(2, 6)
+                self.weather_particles.append({
+                    'type': 'snow',
+                    'x': random.randint(0, width),
+                    'y': random.randint(0, height),
+                    'size': size,
+                    'speed': 0.5 + (6 - size) * 0.2,  # Smaller snowflakes fall slower
+                    'opacity': random.uniform(0.5, 1.0),
+                    'wobble': random.uniform(0.1, 0.5),
+                    'wobble_speed': random.uniform(0.5, 2.0),
+                    'wobble_offset': random.uniform(0, 2 * math.pi)
+                })
+                
+        elif self.weather_condition in ['clouds', 'overcast', 'mist', 'fog']:
+            # Create clouds
+            for _ in range(10):
+                self.weather_particles.append({
+                    'type': 'cloud',
+                    'x': random.randint(0, width),
+                    'y': random.randint(int(height * 0.1), int(height * 0.5)),
+                    'size': random.randint(10, 25),
+                    'speed': random.uniform(0.1, 0.3),
+                    'opacity': random.uniform(0.2, 0.7)
+                })
+        
+        # Add stars for night sky
+        if self.time_of_day in ['night', 'sunset']:
+            for _ in range(50):
+                self.weather_particles.append({
+                    'type': 'star',
+                    'x': random.randint(0, width),
+                    'y': random.randint(0, int(height * 0.6)),
+                    'size': random.uniform(1, 3),
+                    'speed': random.uniform(0.5, 3.0),
+                    'opacity': random.uniform(0.5, 1.0),
+                    'offset': random.uniform(0, 2 * math.pi)
+                })
+        
+        # Always add some clouds for visual interest
+        if not self.weather_condition in ['clouds', 'overcast', 'mist', 'fog']:
+            cloud_count = 5 if self.weather_condition == 'clear' else 8
+            for _ in range(cloud_count):
+                self.weather_particles.append({
+                    'type': 'cloud',
+                    'x': random.randint(0, width),
+                    'y': random.randint(int(height * 0.1), int(height * 0.4)),
+                    'size': random.randint(8, 20),
+                    'speed': random.uniform(0.05, 0.2),
+                    'opacity': random.uniform(0.1, 0.4)
+                })
+    
+    def _update_weather_particles(self, width, height):
+        """Update weather particles animation"""
+        current_time = time.time()
+        
+        for particle in self.weather_particles:
+            if particle['type'] == 'rain':
+                # Move rain down and slightly to the side
+                particle['y'] += particle['speed'] * 10
+                particle['x'] -= particle['speed'] * 2
+                
+                # Reset when out of bounds
+                if particle['y'] > height or particle['x'] < 0:
+                    particle['y'] = random.randint(-20, 0)
+                    particle['x'] = random.randint(0, width)
+                    
+            elif particle['type'] == 'snow':
+                # Snowflakes fall more slowly and wobble
+                wobble = math.sin(current_time * particle['wobble_speed'] + particle['wobble_offset'])
+                particle['x'] += wobble * particle['wobble'] * 2
+                particle['y'] += particle['speed'] * 3
+                
+                # Reset when out of bounds
+                if particle['y'] > height:
+                    particle['y'] = random.randint(-20, 0)
+                    particle['x'] = random.randint(0, width)
+                    
+            elif particle['type'] == 'cloud':
+                # Clouds move slowly horizontally
+                particle['x'] += particle['speed']
+                
+                # Reset when out of bounds
+                if particle['x'] > width + 100:
+                    particle['x'] = -100
+                    particle['y'] = random.randint(int(height * 0.1), int(height * 0.5))
+                    
+            elif particle['type'] == 'lightning':
+                # Lightning flashes occasionally
+                if not particle['active'] and current_time - particle['last_flash'] > random.uniform(5, 15):
+                    # Start a new flash
+                    particle['active'] = True
+                    particle['opacity'] = 1.0
+                    particle['x'] = random.randint(int(width * 0.2), int(width * 0.8))
+                    
+                if particle['active']:
+                    # Fade out quickly
+                    particle['opacity'] -= 0.1
+                    if particle['opacity'] <= 0:
+                        particle['active'] = False
+                        particle['last_flash'] = current_time
+            
+            # Stars twinkle automatically through the sin function in the paint method
     
     def _on_background_changed(self, index):
         """Handle background selection change"""

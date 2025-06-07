@@ -1,0 +1,9 @@
+{
+  "enabled": false,
+  "test_user": {
+    "email": "test@example.com",
+    "name": "Test User",
+    "picture": "https://via.placeholder.com/100"
+  },
+  "skip_google_login": true
+} 

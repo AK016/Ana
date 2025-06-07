@@ -206,8 +206,61 @@ class SettingsTab(QWidget):
         
         self.api_layout.addWidget(self.github_group)
         
+        # Security settings group
+        self.security_group = QGroupBox("Security Settings")
+        self.security_group.setObjectName("settings_group")
+        self.security_form = QFormLayout(self.security_group)
+        self.security_form.setContentsMargins(15, 20, 15, 15)
+        self.security_form.setSpacing(15)
+        
+        # Google Sign-In toggle
+        self.require_google_login = QCheckBox("Require Google Sign-In at startup")
+        self.require_google_login.setObjectName("settings_checkbox")
+        self.security_form.addRow("Google Authentication:", self.require_google_login)
+        
+        # Session timeout
+        self.session_timeout = QSpinBox()
+        self.session_timeout.setObjectName("settings_spinner")
+        self.session_timeout.setRange(5, 480)
+        self.session_timeout.setSuffix(" minutes")
+        self.security_form.addRow("Session Timeout:", self.session_timeout)
+        
+        # Auto-lock toggle
+        self.auto_lock = QCheckBox("Auto-lock when inactive")
+        self.auto_lock.setObjectName("settings_checkbox")
+        self.security_form.addRow("Auto-Lock:", self.auto_lock)
+        
+        # Allowed domains for Google login
+        self.allowed_domains = QLineEdit()
+        self.allowed_domains.setObjectName("settings_input")
+        self.allowed_domains.setPlaceholderText("example.com,company.org (empty=all allowed)")
+        self.security_form.addRow("Allowed Email Domains:", self.allowed_domains)
+        
+        # Clear remembered login button
+        self.clear_login_btn = QPushButton("Clear Remembered Login")
+        self.clear_login_btn.setObjectName("danger_button")
+        self.clear_login_btn.setStyleSheet("""
+            QPushButton {
+                background-color: rgba(255, 60, 120, 0.3);
+                color: #FFFFFF;
+                border: 1px solid #FF3C78;
+                border-radius: 4px;
+                padding: 8px 16px;
+            }
+            QPushButton:hover {
+                background-color: rgba(255, 60, 120, 0.5);
+            }
+            QPushButton:pressed {
+                background-color: rgba(255, 60, 120, 0.7);
+            }
+        """)
+        self.clear_login_btn.clicked.connect(self._on_clear_remembered_login)
+        self.security_form.addRow("Remembered Login:", self.clear_login_btn)
+        
+        self.api_layout.addWidget(self.security_group)
+        
         # Add to tabs
-        self.tabs.addTab(self.api_tab, "API Settings")
+        self.tabs.addTab(self.api_tab, "APIs & Security")
         
         # UI settings tab
         self.ui_tab = QWidget()
@@ -369,7 +422,7 @@ class SettingsTab(QWidget):
         self.browse_btn.clicked.connect(self._on_browse_memory_path)
     
     def _load_settings(self):
-        """Load settings from the settings object"""
+        """Load settings into UI controls"""
         if not self.settings:
             return
         
@@ -404,6 +457,13 @@ class SettingsTab(QWidget):
         self.github_repo.setText(github_settings.get("repo_url", ""))
         self.github_auto_push.setChecked(github_settings.get("auto_push", True))
         
+        # Load Security settings
+        security_settings = self.settings.get("security", {})
+        self.require_google_login.setChecked(security_settings.get("require_google_login", True))
+        self.session_timeout.setValue(security_settings.get("session_timeout_minutes", 60))
+        self.auto_lock.setChecked(security_settings.get("auto_lock", False))
+        self.allowed_domains.setText(",".join(security_settings.get("allowed_domains", [])))
+        
         # Load UI settings
         ui_settings = self.settings.get("ui", {})
         self.ui_theme.setCurrentText(ui_settings.get("theme", "cyberpunk"))
@@ -437,91 +497,76 @@ class SettingsTab(QWidget):
         self.history_length.setValue(storage_settings.get("conversation_history_length", 50))
     
     def _on_save_settings(self):
-        """Save settings to the settings file"""
-        # Create a new settings dictionary with updated values
-        updated_settings = {
-            "assistant": {
-                "name": self.assistant_name.text(),
-                "wake_word": self.wake_word.text(),
-                "version": self.settings.get("assistant", {}).get("version", "1.0.0"),
-                "self_evolution": {
-                    "enabled": self.self_evolution.isChecked(),
-                    "auto_update": self.auto_update.isChecked()
-                },
-                "openai": {
-                    "enabled": self.openai_enabled.isChecked(),
-                    "api_key": self.openai_api_key.text(),
-                    "model": self.openai_model.currentText()
-                }
-            },
-            "voice": {
-                "elevenlabs": {
-                    "api_key": self.elevenlabs_api_key.text(),
-                    "voice_ids": {
-                        "en": self.voice_id_en.text(),
-                        "hi": self.voice_id_hi.text()
-                    }
-                },
-                "porcupine": {
-                    "access_key": self.porcupine_key.text()
-                },
-                "audio": self.settings.get("voice", {}).get("audio", {})
-            },
-            "github": {
-                "enabled": self.github_enabled.isChecked(),
-                "username": self.github_username.text(),
-                "email": self.github_email.text(),
-                "token": self.github_token.text(),
-                "repo_url": self.github_repo.text(),
-                "main_branch": self.settings.get("github", {}).get("main_branch", "main"),
-                "auto_push": self.github_auto_push.isChecked(),
-                "sync_interval": self.settings.get("github", {}).get("sync_interval", 3600),
-                "feature_branches": self.settings.get("github", {}).get("feature_branches", True),
-                "create_pull_requests": self.settings.get("github", {}).get("create_pull_requests", True)
-            },
-            "features": {
-                "wake_word": {
-                    "enabled": self.feature_wake_word.isChecked(),
-                    "sensitivity": self.wake_word_sensitivity.value()
-                },
-                "facial_recognition": {
-                    "enabled": self.feature_facial.isChecked(),
-                    "recognition_interval": self.settings.get("features", {}).get("facial_recognition", {}).get("recognition_interval", 0.5),
-                    "emotion_detection": self.feature_emotion.isChecked()
-                },
-                "gestures": self.settings.get("features", {}).get("gestures", {}),
-                "multilingual": {
-                    "enabled": self.feature_multilingual.isChecked(),
-                    "default_language": self.default_language.currentText(),
-                    "supported_languages": self.settings.get("features", {}).get("multilingual", {}).get("supported_languages", ["en", "hi"])
-                }
-            },
-            "ui": {
-                "theme": self.ui_theme.currentText(),
-                "color_scheme": self.ui_color_scheme.currentText(),
-                "animation_level": self.ui_animation.currentText(),
-                "font_size": self.ui_font_size.currentText()
-            },
-            "storage": {
-                "memory_path": self.memory_path.text(),
-                "conversation_history_length": self.history_length.value(),
-                "auto_backup": self.auto_backup.isChecked()
-            },
-            "system": {
-                "logging_level": self.logging_level.currentText(),
-                "startup_sound": self.startup_sound.isChecked(),
-                "idle_timeout": self.idle_timeout.value()
-            }
-        }
-        
-        # Save to settings file
+        """Save settings to config file"""
         try:
+            # Assistant settings
+            self.settings["assistant"]["name"] = self.assistant_name.text()
+            self.settings["assistant"]["wake_word"] = self.wake_word.text()
+            self.settings["assistant"]["self_evolution"]["enabled"] = self.self_evolution.isChecked()
+            self.settings["assistant"]["self_evolution"]["auto_update"] = self.auto_update.isChecked()
+            
+            # OpenAI settings
+            self.settings["assistant"]["openai"]["enabled"] = self.openai_enabled.isChecked()
+            self.settings["assistant"]["openai"]["api_key"] = self.openai_api_key.text()
+            self.settings["assistant"]["openai"]["model"] = self.openai_model.currentText()
+            
+            # Voice settings
+            self.settings["voice"]["elevenlabs"]["api_key"] = self.elevenlabs_api_key.text()
+            self.settings["voice"]["elevenlabs"]["voice_ids"]["en"] = self.voice_id_en.text()
+            self.settings["voice"]["elevenlabs"]["voice_ids"]["hi"] = self.voice_id_hi.text()
+            self.settings["voice"]["porcupine"]["access_key"] = self.porcupine_key.text()
+            
+            # GitHub settings
+            self.settings["github"]["enabled"] = self.github_enabled.isChecked()
+            self.settings["github"]["username"] = self.github_username.text()
+            self.settings["github"]["email"] = self.github_email.text()
+            self.settings["github"]["token"] = self.github_token.text()
+            self.settings["github"]["repo_url"] = self.github_repo.text()
+            self.settings["github"]["auto_push"] = self.github_auto_push.isChecked()
+            
+            # Security settings
+            self.settings["security"]["require_google_login"] = self.require_google_login.isChecked()
+            self.settings["security"]["session_timeout_minutes"] = self.session_timeout.value()
+            self.settings["security"]["auto_lock"] = self.auto_lock.isChecked()
+            
+            # Parse allowed domains
+            allowed_domains_text = self.allowed_domains.text().strip()
+            if allowed_domains_text:
+                domains = [d.strip() for d in allowed_domains_text.split(",") if d.strip()]
+                self.settings["security"]["allowed_domains"] = domains
+            else:
+                self.settings["security"]["allowed_domains"] = []
+            
+            # Load UI settings
+            self.settings["ui"]["theme"] = self.ui_theme.currentText()
+            self.settings["ui"]["color_scheme"] = self.ui_color_scheme.currentText()
+            self.settings["ui"]["animation_level"] = self.ui_animation.currentText()
+            self.settings["ui"]["font_size"] = self.ui_font_size.currentText()
+            
+            # Load Feature settings
+            self.settings["features"]["wake_word"]["enabled"] = self.feature_wake_word.isChecked()
+            self.settings["features"]["wake_word"]["sensitivity"] = self.wake_word_sensitivity.value()
+            self.settings["features"]["facial_recognition"]["enabled"] = self.feature_facial.isChecked()
+            self.settings["features"]["facial_recognition"]["emotion_detection"] = self.feature_emotion.isChecked()
+            self.settings["features"]["gestures"] = {}
+            self.settings["features"]["multilingual"]["enabled"] = self.feature_multilingual.isChecked()
+            self.settings["features"]["multilingual"]["default_language"] = self.default_language.currentText()
+            self.settings["features"]["multilingual"]["supported_languages"] = ["en", "hi"]
+            
+            # Load System settings
+            self.settings["system"]["logging_level"] = self.logging_level.currentText()
+            self.settings["system"]["startup_sound"] = self.startup_sound.isChecked()
+            self.settings["system"]["idle_timeout"] = self.idle_timeout.value()
+            
+            # Load storage settings
+            self.settings["storage"]["memory_path"] = self.memory_path.text()
+            self.settings["storage"]["conversation_history_length"] = self.history_length.value()
+            self.settings["storage"]["auto_backup"] = self.auto_backup.isChecked()
+            
+            # Save to settings file
             config_path = os.path.join(os.path.dirname(__file__), "..", "config", "settings.json")
             with open(config_path, 'w') as f:
-                json.dump(updated_settings, f, indent=2)
-            
-            # Update the settings object
-            self.settings.update(updated_settings)
+                json.dump(self.settings, f, indent=2)
             
             QMessageBox.information(self, "Settings Saved", "Settings have been saved successfully.")
             logger.info("Settings saved successfully")
@@ -553,4 +598,48 @@ class SettingsTab(QWidget):
         )
         
         if file_path:
-            self.memory_path.setText(file_path) 
+            self.memory_path.setText(file_path)
+    
+    def _on_clear_remembered_login(self):
+        """Clear the remembered Google login"""
+        try:
+            # Get the path to the remember me file
+            app_dir = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
+            data_dir = os.path.join(app_dir, "data")
+            remember_me_path = os.path.join(data_dir, "remember_me.json")
+            token_path = os.path.join(data_dir, "google_token.json")
+            
+            # Check if the files exist
+            files_deleted = []
+            
+            if os.path.exists(remember_me_path):
+                # Instead of deleting, set to disabled
+                with open(remember_me_path, 'w') as f:
+                    json.dump({'enabled': False}, f)
+                files_deleted.append("remember_me.json")
+            
+            if os.path.exists(token_path):
+                os.remove(token_path)
+                files_deleted.append("google_token.json")
+            
+            if files_deleted:
+                QMessageBox.information(
+                    self,
+                    "Login Cleared",
+                    f"Remembered Google login has been cleared.\nYou will need to sign in again next time you start the application."
+                )
+                logger.info(f"Cleared remembered Google login: {', '.join(files_deleted)}")
+            else:
+                QMessageBox.information(
+                    self,
+                    "No Remembered Login",
+                    "There is no remembered Google login to clear."
+                )
+                logger.info("No remembered Google login found to clear")
+        except Exception as e:
+            QMessageBox.critical(
+                self,
+                "Error",
+                f"Failed to clear remembered login: {str(e)}"
+            )
+            logger.error(f"Failed to clear remembered login: {str(e)}") 

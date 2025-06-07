@@ -1,12 +1,12 @@
 #!/usr/bin/env python3
-# Ana AI Assistant - Core Module
+# Ana AI Assistant - Core Package
 
-from core.assistant import AnaAssistant
-from core.voice_engine import VoiceEngine
-from core.memory import MemoryManager
-from core.intent_parser import IntentParser
-from core.updater import Updater
-from core.self_dev import SelfEvolution
+from ana.core.assistant import AnaAssistant
+from ana.core.voice_engine import VoiceEngine
+from ana.core.memory import MemoryManager
+from ana.core.intent_parser import IntentParser
+from ana.core.updater import Updater
+from ana.core.self_dev import SelfEvolution
 
 __all__ = [
     'AnaAssistant',

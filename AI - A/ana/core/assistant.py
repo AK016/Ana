@@ -9,13 +9,13 @@ import asyncio
 from datetime import datetime
 
 # Import core modules
-from core.voice_engine import VoiceEngine, VoiceLanguage, VoiceEmotion
-from core.memory import MemoryManager
-from core.intent_parser import IntentParser
-from core.updater import Updater
-from core.self_dev import SelfEvolution
-from core.events import register_event_handler
-from core.weather_api import WeatherAPI
+from ana.core.voice_engine import VoiceEngine, VoiceLanguage, VoiceEmotion
+from ana.core.memory import MemoryManager
+from ana.core.intent_parser import IntentParser
+from ana.core.updater import Updater
+from ana.core.self_dev import SelfEvolution
+from ana.core.events import register_event_handler
+from ana.core.weather_api import WeatherAPI
 
 logger = logging.getLogger('Ana.Assistant')
 
@@ -147,7 +147,7 @@ class AnaAssistant:
     def _start_facial_recognition(self):
         """Start facial recognition in background"""
         try:
-            from core.facial_recognition import FacialRecognition
+            from ana.core.facial_recognition import FacialRecognition
             
             facial_recognition = FacialRecognition(self.settings)
             facial_recognition.on_face_detected = self._on_face_detected

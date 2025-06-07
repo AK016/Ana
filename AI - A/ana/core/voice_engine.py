@@ -185,6 +185,26 @@ class VoiceEngine:
             except Exception as e:
                 logger.error(f"Error adjusting for ambient noise: {str(e)}")
     
+    def initialize(self):
+        """Initialize voice engine components asynchronously"""
+        logger.info("Initializing voice engine...")
+        
+        # Re-initialize engines if needed
+        self._init_tts_engine()
+        self._init_speech_recognition()
+        
+        # Set up state
+        self.running = False
+        self.is_speaking = False
+        self.is_listening = False
+        
+        # Initialize queues if not already done
+        if not hasattr(self, 'speak_queue'):
+            self.speak_queue = queue.Queue()
+        
+        logger.info("Voice engine initialization complete")
+        return True
+    
     def start(self):
         """Start the voice engine"""
         if self.running:
