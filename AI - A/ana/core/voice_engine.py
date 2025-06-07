@@ -15,9 +15,15 @@ from enum import Enum
 from datetime import datetime
 import pyaudio
 import numpy as np
-from typing import Optional, Dict, List, Union, Callable
+from typing import Optional, Dict, List, Union, Callable, Any
 
 # Optional imports for specific voice features
+try:
+    import pyttsx3
+    PYTTSX3_AVAILABLE = True
+except ImportError:
+    PYTTSX3_AVAILABLE = False
+    
 try:
     import speech_recognition as sr
     SPEECH_RECOGNITION_AVAILABLE = True
