@@ -5,7 +5,7 @@ import logging
 import random
 from datetime import datetime, timedelta
 from PyQt5.QtCore import Qt, QSize
-from PyQt5.QtGui import QIcon, QColor, QPainter, QPen, QBrush, QFont as QtFont
+from PyQt5.QtGui import QIcon, QColor, QPainter, QPen, QBrush, QFont
 from PyQt5.QtWidgets import (
     QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLabel,
     QFrame, QTabWidget, QScrollArea, QLineEdit
@@ -211,6 +211,8 @@ class HealthTab(QWidget):
         # Create chart
         chart = QChart()
         chart.setTitle(title)
+        # Use direct reference to PyQt5.QtGui.QFont instead of QFont
+        from PyQt5.QtGui import QFont as QtFont
         chart.setTitleFont(QtFont("Rajdhani", 12))
         chart.setAnimationOptions(QChart.SeriesAnimations)
         chart.setTheme(QChart.ChartThemeDark)

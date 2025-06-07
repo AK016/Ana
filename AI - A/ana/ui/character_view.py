@@ -584,15 +584,68 @@ class CharacterView(QWidget):
     def animate_listening(self, active: bool = True):
         """Set listening animation state"""
         self.is_listening = active
+        if active:
+            self.set_emotion("surprised")
         
         # Update immediately
         self.update()
     
-    def set_energy_level(self, level: float):
-        """Set character energy level (0.0 to 1.0)"""
-        self.energy_level = max(0.0, min(1.0, level))
+    def on_listening(self, is_listening):
+        """Handle listening state changes"""
+        self.animate_listening(is_listening)
         
-        # Update immediately
+        if is_listening:
+            logger.info("Listening started, animating character")
+        else:
+            logger.info("Listening stopped, returning to neutral")
+            self.set_emotion("neutral")
+    
+    def on_processing(self, is_processing):
+        """Handle processing state changes"""
+        if is_processing:
+            self.set_emotion("thinking")
+            logger.info("Processing started, showing thinking animation")
+        else:
+            self.set_emotion("neutral")
+            logger.info("Processing completed, returning to neutral")
+    
+    def on_speaking(self, text=None):
+        """Handle speaking state changes"""
+        if text:
+            # If we have text, estimate duration based on text length
+            # Roughly 100 characters per second
+            duration = max(1000, len(text) * 10)
+            self.set_emotion("happy")
+            self.animate_speaking(duration)
+            logger.info(f"Speaking started, animating for {duration}ms")
+        else:
+            # If no text, use a default duration
+            self.animate_speaking(1000)
+            logger.info("Speaking started with default duration")
+    
+    def on_idle(self, is_idle=True):
+        """Handle idle state changes"""
+        if is_idle:
+            self.set_emotion("neutral")
+            logger.info("Idle state activated, returning to neutral")
+    
+    def on_wake_word(self):
+        """Handle wake word detection event"""
+        # First show surprised emotion
+        self.set_emotion("surprised")
+        
+        # Animate listening
+        self.animate_listening(True)
+        
+        # Schedule to stop listening after a delay
+        QTimer.singleShot(3000, lambda: self.animate_listening(False))
+        
+        # Log the event
+        logger.info("Wake word detected, animating character response")
+    
+    def set_energy_level(self, level: float):
+        """Set the character's energy level (0.0 to 1.0)"""
+        self.energy_level = max(0.0, min(1.0, level))
         self.update()
     
     # Make sure to clean up the thread on close
