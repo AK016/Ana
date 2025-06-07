@@ -1,9 +1,15 @@
 {
-  "enabled": false,
+  "enabled": true,
+  "skip_google_login": true,
   "test_user": {
-    "email": "test@example.com",
     "name": "Test User",
-    "picture": "https://via.placeholder.com/100"
+    "email": "test@example.com",
+    "picture": ""
   },
-  "skip_google_login": true
+  "mock_services": {
+    "weather": true,
+    "voice": true,
+    "facial_recognition": true
+  },
+  "debug_logging": true
 } 

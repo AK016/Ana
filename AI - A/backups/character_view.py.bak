@@ -58,13 +58,7 @@ class CharacterView(QWidget):
         self.bg_color = QColor(10, 15, 25)  # Dark blue-black
         
         # Character assets
-        # Use test assets directory
-        self.assets_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets', 'character_test')
-        
-        # If test directory doesn't exist, fall back to original
-        if not os.path.exists(self.assets_path):
-            self.assets_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets', 'character')
-            
+        self.assets_path = os.path.join(os.path.dirname(os.path.dirname(os.path.abspath(__file__))), 'assets', 'character')
         self.character_parts = {
             'base': None,  # Base face
             'eyes': {},    # Different eye states
@@ -1380,7 +1374,7 @@ class CharacterView(QWidget):
                 
                 smile_path.closeSubpath()
                 painter.drawPath(smile_path)
-            else:
+        else:
                 # Just draw the smile line for happy
                 painter.drawPath(smile_path)
                 
@@ -1393,6 +1387,7 @@ class CharacterView(QWidget):
                     center_x + mouth_width/4, mouth_y - radius * 0.01
                 )
                 painter.drawPath(highlight_path)
+                
         elif self.current_emotion == "sad":
             # Sad mouth - inverted curve
             painter.setPen(QPen(QColor(40, 30, 35), 1))

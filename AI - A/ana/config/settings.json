@@ -13,6 +13,11 @@
       "model": "gpt-3.5-turbo"
     }
   },
+  "security": {
+    "require_google_login": true,
+    "allowed_domains": [],
+    "local_authentication": true
+  },
   "voice": {
     "elevenlabs": {
       "api_key": "YOUR_ELEVENLABS_API_KEY",

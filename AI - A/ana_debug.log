@@ -43,3 +43,376 @@ ModuleNotFoundError: No module named 'core'
 2025-06-08 00:14:35,723 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
 2025-06-08 00:14:35,724 - Ana - INFO - Google Sign-In required, showing login screen
 2025-06-08 00:14:35,734 - Ana.GoogleLogin - INFO - Remember me is disabled, not using saved credentials
+2025-06-08 00:39:11,371 - Ana - INFO - Loading modules...
+2025-06-08 00:39:11,751 - Ana - INFO - Modules loaded successfully
+2025-06-08 00:39:11,939 - Ana - INFO - Starting Ana AI Assistant...
+2025-06-08 00:39:11,939 - Ana - DEBUG - Loading configuration...
+2025-06-08 00:39:11,939 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 00:39:11,940 - Ana - INFO - Google Sign-In required, showing login screen
+2025-06-08 00:39:11,951 - Ana.GoogleLogin - INFO - Remember me is disabled, not using saved credentials
+2025-06-08 00:39:16,576 - requests_oauthlib.oauth2_session - DEBUG - Generated new state k9zrxWLq2jw1V7ulInzKvgQQ9rULZN.
+2025-06-08 00:40:22,276 - Ana - INFO - Loading modules...
+2025-06-08 00:40:22,664 - Ana - INFO - Modules loaded successfully
+2025-06-08 00:40:22,828 - Ana - INFO - Starting Ana AI Assistant...
+2025-06-08 00:40:22,828 - Ana - DEBUG - Loading configuration...
+2025-06-08 00:40:22,828 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 00:40:22,828 - Ana - WARNING - TEST MODE ENABLED - Using test configuration!
+2025-06-08 00:40:22,828 - Ana - WARNING - TEST MODE - Google login requirement disabled
+2025-06-08 00:40:22,829 - Ana - WARNING - TEST MODE - Using test user: Test User (test@example.com)
+2025-06-08 00:40:22,829 - Ana - DEBUG - Initializing assistant...
+2025-06-08 00:40:23,841 - Ana.VoiceEngine - INFO - Pyttsx3 TTS engine initialized with voice: com.apple.voice.compact.en-GB.Daniel
+2025-06-08 00:40:25,343 - Ana.VoiceEngine - INFO - Adjusting for ambient noise...
+2025-06-08 00:40:27,330 - Ana.VoiceEngine - INFO - Ambient noise adjustment complete
+2025-06-08 00:40:27,440 - Ana.VoiceEngine - INFO - Voice engine initialized
+2025-06-08 00:40:27,440 - Ana.Memory - INFO - Memory manager initialized
+2025-06-08 00:40:27,442 - Ana.IntentParser - INFO - Intent parser initialized
+2025-06-08 00:40:27,442 - Ana.Updater - INFO - Updater initialized
+2025-06-08 00:40:27,442 - Ana.SelfEvolution - INFO - Self evolution module initialized
+2025-06-08 00:40:27,442 - Ana.WeatherAPI - INFO - Weather API initialized
+2025-06-08 00:40:27,442 - Ana.Events - DEBUG - Registered handler for event: wake_word_detected
+2025-06-08 00:40:27,442 - Ana.Assistant - INFO - Ana initialized
+2025-06-08 00:40:27,442 - Ana - DEBUG - Creating main window...
+2025-06-08 00:40:28,064 - Ana.ChatTab - INFO - Chat tab initialized
+2025-06-08 00:40:28,072 - Ana.TasksTab - INFO - Tasks tab initialized
+2025-06-08 00:40:28,138 - Ana.CalendarTab - INFO - Calendar tab initialized
+2025-06-08 00:40:28,149 - Ana.HealthTab - INFO - Health tab initialized
+2025-06-08 00:40:28,151 - Ana.MusicTab - INFO - Music tab initialized
+2025-06-08 00:40:28,155 - Ana.SettingsTab - INFO - Settings tab initialized
+2025-06-08 00:40:28,494 - Ana.DeveloperTab - INFO - Developer tab initialized
+2025-06-08 00:40:28,495 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character
+2025-06-08 00:40:28,495 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 00:40:28,495 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 00:40:28,496 - Ana - ERROR - Error during initialization: 'MainWindow' object has no attribute 'chat_input'
+2025-06-08 00:40:28,497 - Ana - ERROR - Traceback (most recent call last):
+  File "/Users/akshay.kadam/Desktop/AI - A/ana/main.py", line 153, in main
+    window = MainWindow(assistant, settings)
+  File "/Users/akshay.kadam/Desktop/AI - A/ana/ui/main_window.py", line 37, in __init__
+    self._setup_connections()
+  File "/Users/akshay.kadam/Desktop/AI - A/ana/ui/main_window.py", line 342, in _setup_connections
+    self.chat_input.returnPressed.connect(self._on_send_message)
+AttributeError: 'MainWindow' object has no attribute 'chat_input'
+
+2025-06-08 00:41:22,985 - Ana - INFO - Loading modules...
+2025-06-08 00:41:23,383 - Ana - INFO - Modules loaded successfully
+2025-06-08 00:41:23,567 - Ana - INFO - Starting Ana AI Assistant...
+2025-06-08 00:41:23,567 - Ana - DEBUG - Loading configuration...
+2025-06-08 00:41:23,568 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 00:41:23,568 - Ana - WARNING - TEST MODE ENABLED - Using test configuration!
+2025-06-08 00:41:23,568 - Ana - WARNING - TEST MODE - Google login requirement disabled
+2025-06-08 00:41:23,568 - Ana - WARNING - TEST MODE - Using test user: Test User (test@example.com)
+2025-06-08 00:41:23,568 - Ana - DEBUG - Initializing assistant...
+2025-06-08 00:41:24,677 - Ana.VoiceEngine - INFO - Pyttsx3 TTS engine initialized with voice: com.apple.voice.compact.en-GB.Daniel
+2025-06-08 00:41:24,899 - Ana.VoiceEngine - INFO - Adjusting for ambient noise...
+2025-06-08 00:41:26,885 - Ana.VoiceEngine - INFO - Ambient noise adjustment complete
+2025-06-08 00:41:26,992 - Ana.VoiceEngine - INFO - Voice engine initialized
+2025-06-08 00:41:26,992 - Ana.Memory - INFO - Memory manager initialized
+2025-06-08 00:41:26,994 - Ana.IntentParser - INFO - Intent parser initialized
+2025-06-08 00:41:26,994 - Ana.Updater - INFO - Updater initialized
+2025-06-08 00:41:26,994 - Ana.SelfEvolution - INFO - Self evolution module initialized
+2025-06-08 00:41:26,994 - Ana.WeatherAPI - INFO - Weather API initialized
+2025-06-08 00:41:26,994 - Ana.Events - DEBUG - Registered handler for event: wake_word_detected
+2025-06-08 00:41:26,994 - Ana.Assistant - INFO - Ana initialized
+2025-06-08 00:41:26,994 - Ana - DEBUG - Creating main window...
+2025-06-08 00:41:27,538 - Ana.ChatTab - INFO - Chat tab initialized
+2025-06-08 00:41:27,540 - Ana.TasksTab - INFO - Tasks tab initialized
+2025-06-08 00:41:27,572 - Ana.CalendarTab - INFO - Calendar tab initialized
+2025-06-08 00:41:27,576 - Ana.HealthTab - INFO - Health tab initialized
+2025-06-08 00:41:27,577 - Ana.MusicTab - INFO - Music tab initialized
+2025-06-08 00:41:27,579 - Ana.SettingsTab - INFO - Settings tab initialized
+2025-06-08 00:41:27,941 - Ana.DeveloperTab - INFO - Developer tab initialized
+2025-06-08 00:41:27,942 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character
+2025-06-08 00:41:27,942 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 00:41:27,942 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 00:41:27,956 - Ana.BackgroundManager - INFO - Fetching weather data
+2025-06-08 00:41:27,957 - Ana.BackgroundManager - INFO - Background manager initialized
+2025-06-08 00:41:27,957 - Ana.BackgroundManager - INFO - Weather updated: rain in New York
+2025-06-08 00:41:27,957 - Ana.MainWindow - INFO - Main window initialized
+2025-06-08 00:41:28,015 - Ana - DEBUG - Starting assistant services...
+2025-06-08 00:41:28,015 - Ana - INFO - Ana AI Assistant started successfully
+2025-06-08 00:42:38,732 - Ana - INFO - Loading modules...
+2025-06-08 00:42:39,202 - Ana - INFO - Modules loaded successfully
+2025-06-08 00:42:39,401 - Ana - INFO - Starting Ana AI Assistant...
+2025-06-08 00:42:39,401 - Ana - DEBUG - Loading configuration...
+2025-06-08 00:42:39,401 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 00:42:39,402 - Ana - WARNING - TEST MODE ENABLED - Using test configuration!
+2025-06-08 00:42:39,402 - Ana - WARNING - TEST MODE - Google login requirement disabled
+2025-06-08 00:42:39,402 - Ana - WARNING - TEST MODE - Using test user: Test User (test@example.com)
+2025-06-08 00:42:39,402 - Ana - DEBUG - Initializing assistant...
+2025-06-08 00:42:40,488 - Ana.VoiceEngine - INFO - Pyttsx3 TTS engine initialized with voice: com.apple.voice.compact.en-GB.Daniel
+2025-06-08 00:42:40,630 - Ana.VoiceEngine - INFO - Adjusting for ambient noise...
+2025-06-08 00:42:42,615 - Ana.VoiceEngine - INFO - Ambient noise adjustment complete
+2025-06-08 00:42:42,722 - Ana.VoiceEngine - INFO - Voice engine initialized
+2025-06-08 00:42:42,722 - Ana.Memory - INFO - Memory manager initialized
+2025-06-08 00:42:42,723 - Ana.IntentParser - INFO - Intent parser initialized
+2025-06-08 00:42:42,723 - Ana.Updater - INFO - Updater initialized
+2025-06-08 00:42:42,724 - Ana.SelfEvolution - INFO - Self evolution module initialized
+2025-06-08 00:42:42,724 - Ana.WeatherAPI - INFO - Weather API initialized
+2025-06-08 00:42:42,724 - Ana.Events - DEBUG - Registered handler for event: wake_word_detected
+2025-06-08 00:42:42,724 - Ana.Assistant - INFO - Ana initialized
+2025-06-08 00:42:42,724 - Ana - DEBUG - Creating main window...
+2025-06-08 00:42:43,259 - Ana.ChatTab - INFO - Chat tab initialized
+2025-06-08 00:42:43,266 - Ana.TasksTab - INFO - Tasks tab initialized
+2025-06-08 00:42:43,299 - Ana.CalendarTab - INFO - Calendar tab initialized
+2025-06-08 00:42:43,309 - Ana.HealthTab - INFO - Health tab initialized
+2025-06-08 00:42:43,311 - Ana.MusicTab - INFO - Music tab initialized
+2025-06-08 00:42:43,315 - Ana.SettingsTab - INFO - Settings tab initialized
+2025-06-08 00:42:43,660 - Ana.DeveloperTab - INFO - Developer tab initialized
+2025-06-08 00:42:43,661 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character
+2025-06-08 00:42:43,661 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 00:42:43,661 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 00:42:43,673 - Ana.BackgroundManager - INFO - Fetching weather data
+2025-06-08 00:42:43,674 - Ana.BackgroundManager - INFO - Background manager initialized
+2025-06-08 00:42:43,674 - Ana.MainWindow - INFO - Main window initialized
+2025-06-08 00:42:43,674 - Ana.BackgroundManager - INFO - Weather updated: clouds in New York
+2025-06-08 00:42:43,721 - Ana - DEBUG - Starting assistant services...
+2025-06-08 00:42:43,721 - Ana - INFO - Ana AI Assistant started successfully
+2025-06-08 00:42:44,721 - Ana.Assistant - INFO - Starting assistant services...
+2025-06-08 00:42:44,721 - Ana.Memory - INFO - Memory storage initialized
+2025-06-08 00:42:44,722 - Ana.Updater - INFO - Checking for updates...
+2025-06-08 00:42:44,722 - Ana.VoiceEngine - INFO - Initializing voice engine...
+2025-06-08 00:42:44,722 - Ana.WeatherAPI - WARNING - OpenWeatherMap API key not found
+2025-06-08 00:42:44,723 - Ana.Assistant - INFO - Speaking: Good evening, Master. What would you like do to today?
+2025-06-08 00:42:44,724 - Ana.Assistant - INFO - Weather updated for New York
+2025-06-08 00:42:44,724 - Ana.CharacterView - INFO - Speaking started with default duration
+2025-06-08 00:42:44,724 - Ana.Assistant - WARNING - Facial recognition module not available
+2025-06-08 00:42:44,865 - Ana.VoiceEngine - INFO - Pyttsx3 TTS engine initialized with voice: com.apple.voice.compact.en-GB.Daniel
+2025-06-08 00:42:44,990 - Ana.VoiceEngine - INFO - Adjusting for ambient noise...
+2025-06-08 00:42:45,724 - Ana.CharacterView - INFO - Speaking animation stopped
+2025-06-08 00:42:46,973 - Ana.VoiceEngine - INFO - Ambient noise adjustment complete
+2025-06-08 00:42:47,088 - Ana.VoiceEngine - INFO - Voice engine initialization complete
+2025-06-08 00:42:48,426 - Ana.BackgroundManager - INFO - Background changed to cyberpunk_city with params: {'time_of_day': 'night', 'weather': 'clouds'}
+2025-06-08 00:45:14,651 - Ana - INFO - Loading modules...
+2025-06-08 00:45:15,066 - Ana - INFO - Modules loaded successfully
+2025-06-08 00:45:15,249 - Ana - INFO - Starting Ana AI Assistant...
+2025-06-08 00:45:15,249 - Ana - DEBUG - Loading configuration...
+2025-06-08 00:45:15,250 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 00:45:15,250 - Ana - WARNING - TEST MODE ENABLED - Using test configuration!
+2025-06-08 00:45:15,250 - Ana - WARNING - TEST MODE - Google login requirement disabled
+2025-06-08 00:45:15,250 - Ana - WARNING - TEST MODE - Using test user: Test User (test@example.com)
+2025-06-08 00:45:15,250 - Ana - DEBUG - Initializing assistant...
+2025-06-08 00:45:16,350 - Ana.VoiceEngine - INFO - Pyttsx3 TTS engine initialized with voice: com.apple.voice.compact.en-GB.Daniel
+2025-06-08 00:45:16,491 - Ana.VoiceEngine - INFO - Adjusting for ambient noise...
+2025-06-08 00:45:18,476 - Ana.VoiceEngine - INFO - Ambient noise adjustment complete
+2025-06-08 00:45:18,583 - Ana.VoiceEngine - INFO - Voice engine initialized
+2025-06-08 00:45:18,583 - Ana.Memory - INFO - Memory manager initialized
+2025-06-08 00:45:18,584 - Ana.IntentParser - INFO - Intent parser initialized
+2025-06-08 00:45:18,584 - Ana.Updater - INFO - Updater initialized
+2025-06-08 00:45:18,585 - Ana.SelfEvolution - INFO - Self evolution module initialized
+2025-06-08 00:45:18,585 - Ana.WeatherAPI - INFO - Weather API initialized
+2025-06-08 00:45:18,585 - Ana.Events - DEBUG - Registered handler for event: wake_word_detected
+2025-06-08 00:45:18,585 - Ana.Assistant - INFO - Ana initialized
+2025-06-08 00:45:18,585 - Ana - DEBUG - Creating main window...
+2025-06-08 00:45:19,132 - Ana.ChatTab - INFO - Chat tab initialized
+2025-06-08 00:45:19,139 - Ana.TasksTab - INFO - Tasks tab initialized
+2025-06-08 00:45:19,178 - Ana.CalendarTab - INFO - Calendar tab initialized
+2025-06-08 00:45:19,191 - Ana.HealthTab - INFO - Health tab initialized
+2025-06-08 00:45:19,193 - Ana.MusicTab - INFO - Music tab initialized
+2025-06-08 00:45:19,197 - Ana.SettingsTab - INFO - Settings tab initialized
+2025-06-08 00:45:19,559 - Ana.DeveloperTab - INFO - Developer tab initialized
+2025-06-08 00:45:19,561 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character
+2025-06-08 00:45:19,561 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 00:45:19,561 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 00:45:19,574 - Ana.BackgroundManager - INFO - Fetching weather data
+2025-06-08 00:45:19,574 - Ana.BackgroundManager - INFO - Background manager initialized
+2025-06-08 00:45:19,574 - Ana.BackgroundManager - INFO - Weather updated: snow in New York
+2025-06-08 00:45:19,574 - Ana.MainWindow - INFO - Main window initialized
+2025-06-08 00:45:19,625 - Ana - DEBUG - Starting assistant services...
+2025-06-08 00:45:19,625 - Ana - INFO - Ana AI Assistant started successfully
+2025-06-08 00:45:20,626 - Ana.Assistant - INFO - Starting assistant services...
+2025-06-08 00:45:20,627 - Ana.Memory - INFO - Memory storage initialized
+2025-06-08 00:45:20,627 - Ana.Updater - INFO - Checking for updates...
+2025-06-08 00:45:20,627 - Ana.VoiceEngine - INFO - Initializing voice engine...
+2025-06-08 00:45:20,627 - Ana.WeatherAPI - WARNING - OpenWeatherMap API key not found
+2025-06-08 00:45:20,628 - Ana.Assistant - INFO - Weather updated for New York
+2025-06-08 00:45:20,628 - Ana.Assistant - INFO - Speaking: Good evening, Master. It's 28.4°C and thunderstorm outside today. What would you like do to today?
+2025-06-08 00:45:20,628 - Ana.CharacterView - INFO - Speaking started with default duration
+2025-06-08 00:45:20,632 - Ana.Assistant - WARNING - Facial recognition module not available
+2025-06-08 00:45:20,759 - Ana.VoiceEngine - INFO - Pyttsx3 TTS engine initialized with voice: com.apple.voice.compact.en-GB.Daniel
+2025-06-08 00:45:20,886 - Ana.VoiceEngine - INFO - Adjusting for ambient noise...
+2025-06-08 00:45:21,629 - Ana.CharacterView - INFO - Speaking animation stopped
+2025-06-08 00:45:22,875 - Ana.VoiceEngine - INFO - Ambient noise adjustment complete
+2025-06-08 00:45:22,986 - Ana.VoiceEngine - INFO - Voice engine initialization complete
+2025-06-08 00:45:24,335 - Ana.BackgroundManager - INFO - Background changed to weather with params: {'time_of_day': 'night', 'weather': 'snow'}
+2025-06-08 00:45:34,375 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 00:46:08,763 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 00:48:06,231 - Ana - INFO - Loading modules...
+2025-06-08 00:48:06,663 - Ana - INFO - Modules loaded successfully
+2025-06-08 00:48:06,835 - Ana - INFO - Starting Ana AI Assistant...
+2025-06-08 00:48:06,835 - Ana - DEBUG - Loading configuration...
+2025-06-08 00:48:06,835 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 00:48:06,836 - Ana - INFO - Google Sign-In required, showing login screen
+2025-06-08 00:48:06,845 - Ana.GoogleLogin - INFO - Remember me is disabled, not using saved credentials
+2025-06-08 00:48:10,552 - requests_oauthlib.oauth2_session - DEBUG - Generated new state ocEwgJ3ocaBxaE29aS0q3JPXI2X6O6.
+2025-06-08 00:49:30,587 - Ana - INFO - Loading modules...
+2025-06-08 00:49:30,996 - Ana - INFO - Modules loaded successfully
+2025-06-08 00:49:31,247 - Ana - INFO - Starting Ana AI Assistant...
+2025-06-08 00:49:31,247 - Ana - DEBUG - Loading configuration...
+2025-06-08 00:49:31,247 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 00:49:31,247 - Ana - WARNING - TEST MODE ENABLED - Using test configuration!
+2025-06-08 00:49:31,248 - Ana - WARNING - TEST MODE - Google login requirement disabled
+2025-06-08 00:49:31,248 - Ana - WARNING - TEST MODE - Using test user: Test User (test@example.com)
+2025-06-08 00:49:31,248 - Ana - DEBUG - Initializing assistant...
+2025-06-08 00:49:32,329 - Ana.VoiceEngine - INFO - Pyttsx3 TTS engine initialized with voice: com.apple.voice.compact.en-GB.Daniel
+2025-06-08 00:49:32,496 - Ana.VoiceEngine - INFO - Adjusting for ambient noise...
+2025-06-08 00:49:34,485 - Ana.VoiceEngine - INFO - Ambient noise adjustment complete
+2025-06-08 00:49:34,591 - Ana.VoiceEngine - INFO - Voice engine initialized
+2025-06-08 00:49:34,591 - Ana.Memory - INFO - Memory manager initialized
+2025-06-08 00:49:34,592 - Ana.IntentParser - INFO - Intent parser initialized
+2025-06-08 00:49:34,592 - Ana.Updater - INFO - Updater initialized
+2025-06-08 00:49:34,593 - Ana.SelfEvolution - INFO - Self evolution module initialized
+2025-06-08 00:49:34,593 - Ana.WeatherAPI - INFO - Weather API initialized
+2025-06-08 00:49:34,593 - Ana.Events - DEBUG - Registered handler for event: wake_word_detected
+2025-06-08 00:49:34,593 - Ana.Assistant - INFO - Ana initialized
+2025-06-08 00:49:34,593 - Ana - DEBUG - Creating main window...
+2025-06-08 00:49:35,136 - Ana.ChatTab - INFO - Chat tab initialized
+2025-06-08 00:49:35,144 - Ana.TasksTab - INFO - Tasks tab initialized
+2025-06-08 00:49:35,195 - Ana.CalendarTab - INFO - Calendar tab initialized
+2025-06-08 00:49:35,204 - Ana.HealthTab - INFO - Health tab initialized
+2025-06-08 00:49:35,206 - Ana.MusicTab - INFO - Music tab initialized
+2025-06-08 00:49:35,210 - Ana.SettingsTab - INFO - Settings tab initialized
+2025-06-08 00:49:35,566 - Ana.DeveloperTab - INFO - Developer tab initialized
+2025-06-08 00:49:35,567 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character
+2025-06-08 00:49:35,568 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 00:49:35,568 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 00:49:35,580 - Ana.BackgroundManager - INFO - Fetching weather data
+2025-06-08 00:49:35,580 - Ana.BackgroundManager - INFO - Background manager initialized
+2025-06-08 00:49:35,580 - Ana.BackgroundManager - INFO - Weather updated: snow in New York
+2025-06-08 00:49:35,580 - Ana.MainWindow - INFO - Main window initialized
+2025-06-08 00:49:35,632 - Ana - DEBUG - Starting assistant services...
+2025-06-08 00:49:35,632 - Ana - INFO - Ana AI Assistant started successfully
+2025-06-08 00:49:36,633 - Ana.Assistant - INFO - Starting assistant services...
+2025-06-08 00:49:36,633 - Ana.Memory - INFO - Memory storage initialized
+2025-06-08 00:49:36,634 - Ana.Updater - INFO - Checking for updates...
+2025-06-08 00:49:36,634 - Ana.VoiceEngine - INFO - Initializing voice engine...
+2025-06-08 00:49:36,634 - Ana.WeatherAPI - WARNING - OpenWeatherMap API key not found
+2025-06-08 00:49:36,634 - Ana.Assistant - INFO - Weather updated for New York
+2025-06-08 00:49:36,634 - Ana.Assistant - INFO - Speaking: Good evening, Master. It's 34.7°C and rain outside today. What would you like do to today?
+2025-06-08 00:49:36,635 - Ana.CharacterView - INFO - Speaking started with default duration
+2025-06-08 00:49:36,640 - Ana.Assistant - WARNING - Facial recognition module not available
+2025-06-08 00:49:36,744 - Ana.VoiceEngine - INFO - Pyttsx3 TTS engine initialized with voice: com.apple.voice.compact.en-GB.Daniel
+2025-06-08 00:49:36,864 - Ana.VoiceEngine - INFO - Adjusting for ambient noise...
+2025-06-08 00:49:37,636 - Ana.CharacterView - INFO - Speaking animation stopped
+2025-06-08 00:49:38,847 - Ana.VoiceEngine - INFO - Ambient noise adjustment complete
+2025-06-08 00:49:38,957 - Ana.VoiceEngine - INFO - Voice engine initialization complete
+2025-06-08 00:49:40,336 - Ana.BackgroundManager - INFO - Background changed to weather with params: {'time_of_day': 'night', 'weather': 'snow'}
+2025-06-08 00:49:42,710 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 00:52:44,826 - Ana - INFO - Loading modules...
+2025-06-08 00:54:14,213 - Ana - INFO - Loading modules...
+2025-06-08 00:56:14,074 - Ana - INFO - Loading modules...
+2025-06-08 00:58:00,722 - Ana - INFO - Loading modules...
+2025-06-08 00:58:01,077 - Ana - INFO - Modules loaded successfully
+2025-06-08 00:58:01,246 - Ana - INFO - Starting Ana AI Assistant...
+2025-06-08 00:58:01,246 - Ana - DEBUG - Loading configuration...
+2025-06-08 00:58:01,247 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 00:58:01,247 - Ana - WARNING - TEST MODE ENABLED - Using test configuration!
+2025-06-08 00:58:01,247 - Ana - WARNING - TEST MODE - Google login requirement disabled
+2025-06-08 00:58:01,247 - Ana - WARNING - TEST MODE - Using test user: Test User (test@example.com)
+2025-06-08 00:58:01,247 - Ana - DEBUG - Initializing assistant...
+2025-06-08 00:58:02,088 - Ana.VoiceEngine - INFO - Pyttsx3 TTS engine initialized with voice: com.apple.voice.compact.en-GB.Daniel
+2025-06-08 00:58:02,206 - Ana.VoiceEngine - INFO - Adjusting for ambient noise...
+2025-06-08 00:58:04,195 - Ana.VoiceEngine - INFO - Ambient noise adjustment complete
+2025-06-08 00:58:04,301 - Ana.VoiceEngine - INFO - Voice engine initialized
+2025-06-08 00:58:04,302 - Ana.Memory - INFO - Memory manager initialized
+2025-06-08 00:58:04,303 - Ana.IntentParser - INFO - Intent parser initialized
+2025-06-08 00:58:04,303 - Ana.Updater - INFO - Updater initialized
+2025-06-08 00:58:04,304 - Ana.SelfEvolution - INFO - Self evolution module initialized
+2025-06-08 00:58:04,304 - Ana.WeatherAPI - INFO - Weather API initialized
+2025-06-08 00:58:04,304 - Ana.Events - DEBUG - Registered handler for event: wake_word_detected
+2025-06-08 00:58:04,304 - Ana.Assistant - INFO - Ana initialized
+2025-06-08 00:58:04,304 - Ana - DEBUG - Creating main window...
+2025-06-08 00:58:04,796 - Ana.ChatTab - INFO - Chat tab initialized
+2025-06-08 00:58:04,802 - Ana.TasksTab - INFO - Tasks tab initialized
+2025-06-08 00:58:04,839 - Ana.CalendarTab - INFO - Calendar tab initialized
+2025-06-08 00:58:04,849 - Ana.HealthTab - INFO - Health tab initialized
+2025-06-08 00:58:04,850 - Ana.MusicTab - INFO - Music tab initialized
+2025-06-08 00:58:04,854 - Ana.SettingsTab - INFO - Settings tab initialized
+2025-06-08 00:58:05,165 - Ana.DeveloperTab - INFO - Developer tab initialized
+2025-06-08 00:58:05,167 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character
+2025-06-08 00:58:05,167 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 00:58:05,167 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 00:58:05,177 - Ana.BackgroundManager - INFO - Fetching weather data
+2025-06-08 00:58:05,177 - Ana.BackgroundManager - INFO - Background manager initialized
+2025-06-08 00:58:05,177 - Ana.BackgroundManager - INFO - Weather updated: thunderstorm in New York
+2025-06-08 00:58:05,177 - Ana.MainWindow - INFO - Main window initialized
+2025-06-08 00:58:05,217 - Ana - DEBUG - Starting assistant services...
+2025-06-08 00:58:05,217 - Ana - INFO - Ana AI Assistant started successfully
+2025-06-08 00:58:06,219 - Ana.Assistant - INFO - Starting assistant services...
+2025-06-08 00:58:06,219 - Ana.Memory - INFO - Memory storage initialized
+2025-06-08 00:58:06,219 - Ana.Updater - INFO - Checking for updates...
+2025-06-08 00:58:06,219 - Ana.VoiceEngine - INFO - Initializing voice engine...
+2025-06-08 00:58:06,219 - Ana.WeatherAPI - WARNING - OpenWeatherMap API key not found
+2025-06-08 00:58:06,220 - Ana.Assistant - INFO - Speaking: Good evening, Master. What would you like do to today?
+2025-06-08 00:58:06,220 - Ana.Assistant - INFO - Weather updated for New York
+2025-06-08 00:58:06,220 - Ana.CharacterView - INFO - Speaking started with default duration
+2025-06-08 00:58:06,223 - Ana.Assistant - WARNING - Facial recognition module not available
+2025-06-08 00:58:06,309 - Ana.VoiceEngine - INFO - Pyttsx3 TTS engine initialized with voice: com.apple.voice.compact.en-GB.Daniel
+2025-06-08 00:58:06,408 - Ana.VoiceEngine - INFO - Adjusting for ambient noise...
+2025-06-08 00:58:07,222 - Ana.CharacterView - INFO - Speaking animation stopped
+2025-06-08 00:58:08,398 - Ana.VoiceEngine - INFO - Ambient noise adjustment complete
+2025-06-08 00:58:08,508 - Ana.VoiceEngine - INFO - Voice engine initialization complete
+2025-06-08 00:58:10,338 - Ana.BackgroundManager - INFO - Background changed to cyberpunk_city with params: {'time_of_day': 'night', 'weather': 'thunderstorm'}
+2025-06-08 00:58:11,394 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character
+2025-06-08 00:58:11,394 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 00:58:11,394 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 00:58:11,397 - Ana.FullScreenCharacter - INFO - Full screen character view initialized
+2025-06-08 00:58:11,397 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 00:58:11,399 - Ana.FullScreenCharacter - INFO - Background set to weather with time of day: night, weather: rain
+2025-06-08 00:58:18,841 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character
+2025-06-08 00:58:18,841 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 00:58:18,842 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 00:58:18,846 - Ana.FullScreenCharacter - INFO - Full screen character view initialized
+2025-06-08 00:58:18,846 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 00:58:18,846 - Ana.FullScreenCharacter - INFO - Background set to weather with time of day: night, weather: rain
+2025-06-08 00:58:20,081 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:14:35,013 - Ana - INFO - Loading modules...
+2025-06-08 01:14:35,523 - Ana - INFO - Modules loaded successfully
+2025-06-08 01:14:35,775 - Ana - INFO - Starting Ana AI Assistant...
+2025-06-08 01:14:35,776 - Ana - DEBUG - Loading configuration...
+2025-06-08 01:14:35,776 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 01:14:35,776 - Ana - WARNING - TEST MODE ENABLED - Using test configuration!
+2025-06-08 01:14:35,776 - Ana - WARNING - TEST MODE - Google login requirement disabled
+2025-06-08 01:14:35,776 - Ana - WARNING - TEST MODE - Using test user: Test User (test@example.com)
+2025-06-08 01:14:35,776 - Ana - DEBUG - Initializing assistant...
+2025-06-08 01:14:36,915 - Ana.VoiceEngine - INFO - Pyttsx3 TTS engine initialized with voice: com.apple.voice.compact.en-GB.Daniel
+2025-06-08 01:14:37,064 - Ana.VoiceEngine - INFO - Adjusting for ambient noise...
+2025-06-08 01:14:39,050 - Ana.VoiceEngine - INFO - Ambient noise adjustment complete
+2025-06-08 01:14:39,156 - Ana.VoiceEngine - INFO - Voice engine initialized
+2025-06-08 01:14:39,156 - Ana.Memory - INFO - Memory manager initialized
+2025-06-08 01:14:39,157 - Ana.IntentParser - INFO - Intent parser initialized
+2025-06-08 01:14:39,158 - Ana.Updater - INFO - Updater initialized
+2025-06-08 01:14:39,158 - Ana.SelfEvolution - INFO - Self evolution module initialized
+2025-06-08 01:14:39,158 - Ana.WeatherAPI - INFO - Weather API initialized
+2025-06-08 01:14:39,158 - Ana.Events - DEBUG - Registered handler for event: wake_word_detected
+2025-06-08 01:14:39,158 - Ana.Assistant - INFO - Ana initialized
+2025-06-08 01:14:39,158 - Ana - DEBUG - Creating main window...
+2025-06-08 01:14:39,745 - Ana.ChatTab - INFO - Chat tab initialized
+2025-06-08 01:14:39,754 - Ana.TasksTab - INFO - Tasks tab initialized
+2025-06-08 01:14:39,812 - Ana.CalendarTab - INFO - Calendar tab initialized
+2025-06-08 01:14:39,825 - Ana.HealthTab - INFO - Health tab initialized
+2025-06-08 01:14:39,828 - Ana.MusicTab - INFO - Music tab initialized
+2025-06-08 01:14:39,833 - Ana.SettingsTab - INFO - Settings tab initialized
+2025-06-08 01:14:40,228 - Ana.DeveloperTab - INFO - Developer tab initialized
+2025-06-08 01:14:40,230 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character_test
+2025-06-08 01:14:40,250 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 01:14:40,250 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 01:14:40,268 - Ana.BackgroundManager - INFO - Fetching weather data
+2025-06-08 01:14:40,268 - Ana.BackgroundManager - INFO - Background manager initialized
+2025-06-08 01:14:40,268 - Ana.BackgroundManager - INFO - Weather updated: clouds in New York
+2025-06-08 01:14:40,269 - Ana.MainWindow - INFO - Main window initialized
+2025-06-08 01:14:40,340 - Ana - DEBUG - Starting assistant services...
+2025-06-08 01:14:40,340 - Ana - INFO - Ana AI Assistant started successfully
+2025-06-08 01:14:41,341 - Ana.Assistant - INFO - Starting assistant services...
+2025-06-08 01:14:41,351 - Ana.Memory - INFO - Memory storage initialized
+2025-06-08 01:14:41,355 - Ana.Updater - INFO - Checking for updates...
+2025-06-08 01:14:41,355 - Ana.VoiceEngine - INFO - Initializing voice engine...
+2025-06-08 01:14:41,356 - Ana.WeatherAPI - WARNING - OpenWeatherMap API key not found
+2025-06-08 01:14:41,360 - Ana.Assistant - INFO - Speaking: Good evening, Master. What would you like do to today?
+2025-06-08 01:14:41,364 - Ana.Assistant - INFO - Weather updated for New York
+2025-06-08 01:14:41,364 - Ana.CharacterView - INFO - Speaking started with default duration
+2025-06-08 01:14:41,396 - Ana.Assistant - WARNING - Facial recognition module not available
+2025-06-08 01:14:41,799 - Ana.VoiceEngine - INFO - Pyttsx3 TTS engine initialized with voice: com.apple.voice.compact.en-GB.Daniel
+2025-06-08 01:14:42,020 - Ana.VoiceEngine - INFO - Adjusting for ambient noise...
+2025-06-08 01:14:42,365 - Ana.CharacterView - INFO - Speaking animation stopped
+2025-06-08 01:14:44,003 - Ana.VoiceEngine - INFO - Ambient noise adjustment complete
+2025-06-08 01:14:44,136 - Ana.VoiceEngine - INFO - Voice engine initialization complete
+2025-06-08 01:14:45,355 - Ana.BackgroundManager - INFO - Background changed to cyberpunk_city with params: {'time_of_day': 'night', 'weather': 'clouds'}

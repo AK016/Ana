@@ -392,7 +392,7 @@ class GoogleLoginDialog(QDialog):
         return os.path.join(
             os.path.dirname(os.path.dirname(os.path.abspath(__file__))),
             "config", 
-            "google_credentials.json"
+            "client_secrets.json"
         )
     
     def _start_google_auth(self):
@@ -411,7 +411,7 @@ class GoogleLoginDialog(QDialog):
             QMessageBox.critical(
                 self,
                 "Missing OAuth Credentials",
-                "Google OAuth credentials file is missing. Please add a valid 'google_credentials.json' file to the config directory."
+                "Google OAuth credentials file is missing. Please add a valid 'client_secrets.json' file to the config directory."
             )
             return
         

@@ -338,25 +338,21 @@ class MainWindow(QMainWindow):
         # Connect face detection
         self.assistant.add_callback("face_detected", self._on_face_detected)
         
-        # Connect chat input to message sending
-        self.chat_input.returnPressed.connect(self._on_send_message)
-        self.send_button.clicked.connect(self._on_send_message)
+        # Connect assistant signals to corresponding methods once we have them
+        # self.assistant.message_received.connect(self._on_assistant_message)
+        # self.assistant.listening_changed.connect(self._on_listening_changed)
+        # self.assistant.processing_changed.connect(self._on_processing_changed)
+        # self.assistant.speaking_changed.connect(self._on_speaking_changed)
         
-        # Connect assistant signals
-        self.assistant.message_received.connect(self._on_assistant_message)
-        self.assistant.listening_changed.connect(self._on_listening_changed)
-        self.assistant.processing_changed.connect(self._on_processing_changed)
-        self.assistant.speaking_changed.connect(self._on_speaking_changed)
+        # Connect menu actions if they exist
+        # self.action_settings.triggered.connect(self._on_show_settings)
+        # self.action_exit.triggered.connect(self.close)
+        # self.action_fullscreen_character.triggered.connect(self._show_fullscreen_character)
         
-        # Connect menu actions
-        self.action_settings.triggered.connect(self._on_show_settings)
-        self.action_exit.triggered.connect(self.close)
-        self.action_fullscreen_character.triggered.connect(self._on_show_fullscreen)
-        
-        # Connect button actions
-        self.theme_button.clicked.connect(self._on_toggle_theme)
-        self.help_button.clicked.connect(self._on_show_help)
-        self.full_screen_button.clicked.connect(self._on_show_fullscreen)
+        # Connect button actions if they exist
+        # self.theme_button.clicked.connect(self._on_toggle_theme)
+        # self.help_button.clicked.connect(self._on_show_help)
+        self.fullscreen_button.clicked.connect(self._show_fullscreen_character)
     
     def _on_assistant_speaking(self):
         """Handle assistant speaking event"""
@@ -563,26 +559,29 @@ class MainWindow(QMainWindow):
     
     def _on_send_message(self):
         """Handle sending a message to the assistant"""
-        message = self.chat_input.text().strip()
-        if not message:
-            return
+        # Get the active chat tab and use its input field instead
+        if hasattr(self, 'chat_tab') and hasattr(self.chat_tab, 'input_text'):
+            message = self.chat_tab.input_text.toPlainText().strip()
+            if not message:
+                return
+                
+            # Clear the input
+            self.chat_tab.input_text.clear()
             
-        # Clear the input
-        self.chat_input.clear()
-        
-        # Add the message to the chat display
-        self._add_user_message(message)
-        
-        # Send the message to the assistant
-        self.assistant.send_message(message)
-        
-        # Analyze message for mood and update background manager
-        self.background_manager.analyze_message(message)
+            # Add the message to the chat display
+            self.chat_tab._add_user_message(message)
+            
+            # Send the message to the assistant
+            self.assistant.process_input(message)
+            
+            # Analyze message for mood and update background manager
+            self.background_manager.analyze_message(message)
     
     def _on_assistant_message(self, message):
         """Handle receiving a message from the assistant"""
-        # Add the message to the chat display
-        self._add_assistant_message(message)
+        # Add the message to the chat display if chat tab exists
+        if hasattr(self, 'chat_tab'):
+            self.chat_tab._add_assistant_message(message)
         
         # Analyze the assistant's response for mood
         self.background_manager.analyze_message(message)

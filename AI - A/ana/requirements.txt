@@ -1,8 +1,29 @@
-PyQt5==5.15.9
-pydub==0.25.1
-pyaudio==0.2.13
-openai==1.4.0
-requests==2.31.0
-SpeechRecognition==3.10.0
-python-dotenv==1.0.0
-numpy==1.24.3 
+# Ana AI Assistant - Core Requirements
+
+# UI and Graphics
+PyQt5>=5.15.9
+PyQt5-Qt5>=5.15.2
+PyQt5-sip>=12.12.2
+PyQt5-SVG>=5.15.0  # For SVG rendering support
+
+# Audio Processing
+pydub>=0.25.1
+pyaudio>=0.2.13
+SpeechRecognition>=3.10.0
+pvporcupine>=2.2.0  # Wake word detection
+
+# AI Services
+openai>=1.4.0
+
+# Google Authentication
+google-auth>=2.22.0
+google-auth-oauthlib>=1.0.0
+google-auth-httplib2>=0.1.0
+
+# External APIs
+requests>=2.31.0
+
+# Utilities
+python-dotenv>=1.0.0
+numpy>=1.24.3
+pillow>=10.0.0  # Image processing 

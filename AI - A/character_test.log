@@ -1,0 +1,220 @@
+2025-06-08 01:16:37,311 - CharacterTest - INFO - Loading modules...
+2025-06-08 01:16:37,333 - CharacterTest - INFO - Modules loaded successfully
+2025-06-08 01:16:37,500 - CharacterTest - DEBUG - Loading configuration...
+2025-06-08 01:16:37,501 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 01:16:37,501 - CharacterTest - INFO - Using custom character path: character_test
+2025-06-08 01:16:37,501 - CharacterTest - DEBUG - Creating character window...
+2025-06-08 01:16:37,506 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character_test
+2025-06-08 01:16:37,551 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 01:16:37,551 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 01:16:37,554 - Ana.CharacterOnlyWindow - INFO - Character-only window initialized
+2025-06-08 01:16:37,655 - CharacterTest - INFO - Character test window started successfully
+2025-06-08 01:17:09,069 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:17:44,228 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:23:20,557 - CharacterTest - INFO - Loading modules...
+2025-06-08 01:23:20,574 - CharacterTest - INFO - Modules loaded successfully
+2025-06-08 01:23:20,728 - CharacterTest - DEBUG - Loading configuration...
+2025-06-08 01:23:20,729 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 01:23:20,729 - CharacterTest - INFO - Using custom character path: character_test
+2025-06-08 01:23:20,729 - CharacterTest - DEBUG - Creating character window...
+2025-06-08 01:23:20,732 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character_test
+2025-06-08 01:23:20,765 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 01:23:20,765 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 01:23:20,768 - Ana.CharacterOnlyWindow - INFO - Character-only window initialized
+2025-06-08 01:23:20,914 - CharacterTest - INFO - Character test window started successfully
+2025-06-08 01:23:36,868 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:23:50,161 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:25:11,629 - CharacterTest - INFO - Loading modules...
+2025-06-08 01:25:11,648 - CharacterTest - INFO - Modules loaded successfully
+2025-06-08 01:25:11,813 - CharacterTest - DEBUG - Loading configuration...
+2025-06-08 01:25:11,814 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 01:25:11,814 - CharacterTest - INFO - Using custom character path: character_test
+2025-06-08 01:25:11,814 - CharacterTest - DEBUG - Creating character window...
+2025-06-08 01:25:11,818 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character_test
+2025-06-08 01:25:11,933 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 01:25:11,933 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 01:25:12,012 - Ana.CharacterOnlyWindow - INFO - Character-only window initialized
+2025-06-08 01:25:12,127 - CharacterTest - INFO - Character test window started successfully
+2025-06-08 01:25:24,334 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:25:48,840 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:26:02,374 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:26:49,973 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:27:16,507 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:27:48,742 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:33:49,157 - CharacterTest - INFO - Loading modules...
+2025-06-08 01:33:49,319 - CharacterTest - ERROR - Error during initialization: No module named 'PyQt5.QtWebEngineWidgets'
+2025-06-08 01:33:49,320 - CharacterTest - ERROR - Traceback (most recent call last):
+  File "/Users/akshay.kadam/Desktop/AI - A/character_test.py", line 33, in main
+    from ana.ui.character_only_window import CharacterOnlyWindow
+  File "/Users/akshay.kadam/Desktop/AI - A/ana/ui/character_only_window.py", line 22, in <module>
+    from PyQt5.QtWebEngineWidgets import QWebEngineView
+ModuleNotFoundError: No module named 'PyQt5.QtWebEngineWidgets'
+
+2025-06-08 01:34:21,818 - CharacterTest - INFO - Loading modules...
+2025-06-08 01:34:21,959 - CharacterTest - INFO - Modules loaded successfully
+2025-06-08 01:34:22,100 - CharacterTest - DEBUG - Loading configuration...
+2025-06-08 01:34:22,100 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 01:34:22,100 - CharacterTest - INFO - Using custom character path: character_test
+2025-06-08 01:34:22,100 - CharacterTest - DEBUG - Creating character window...
+2025-06-08 01:34:22,105 - CharacterTest - ERROR - Error during initialization: 'invalid color id for argument custom_colors: "secondary".'
+2025-06-08 01:34:22,107 - CharacterTest - ERROR - Traceback (most recent call last):
+  File "/Users/akshay.kadam/Desktop/AI - A/character_test.py", line 62, in main
+    window = CharacterOnlyWindow(settings=settings)
+  File "/Users/akshay.kadam/Desktop/AI - A/ana/ui/character_only_window.py", line 51, in __init__
+    self._setup_theme()
+  File "/Users/akshay.kadam/Desktop/AI - A/ana/ui/character_only_window.py", line 388, in _setup_theme
+    self.stylesheet = qdarktheme.setup_theme(
+  File "/Users/akshay.kadam/Library/Python/3.9/lib/python/site-packages/qdarktheme/_main.py", line 175, in setup_theme
+    callback()
+  File "/Users/akshay.kadam/Library/Python/3.9/lib/python/site-packages/qdarktheme/_main.py", line 166, in callback
+    _apply_style(
+  File "/Users/akshay.kadam/Library/Python/3.9/lib/python/site-packages/qdarktheme/_main.py", line 18, in _apply_style
+    stylesheet = load_stylesheet(**kargs)
+  File "/Users/akshay.kadam/Library/Python/3.9/lib/python/site-packages/qdarktheme/_style_loader.py", line 183, in load_stylesheet
+    _marge_colors(color_values, custom_colors, theme)
+  File "/Users/akshay.kadam/Library/Python/3.9/lib/python/site-packages/qdarktheme/_style_loader.py", line 98, in _marge_colors
+    raise KeyError(f'invalid color id for argument custom_colors: "{color_id}".') from None
+KeyError: 'invalid color id for argument custom_colors: "secondary".'
+
+2025-06-08 01:35:00,882 - CharacterTest - INFO - Loading modules...
+2025-06-08 01:35:01,073 - CharacterTest - INFO - Modules loaded successfully
+2025-06-08 01:35:01,247 - CharacterTest - DEBUG - Loading configuration...
+2025-06-08 01:35:01,248 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 01:35:01,248 - CharacterTest - INFO - Using custom character path: character_test
+2025-06-08 01:35:01,248 - CharacterTest - DEBUG - Creating character window...
+2025-06-08 01:35:01,300 - CharacterTest - ERROR - Error during initialization: unsupported operand type(s) for +: 'NoneType' and 'str'
+2025-06-08 01:35:01,301 - CharacterTest - ERROR - Traceback (most recent call last):
+  File "/Users/akshay.kadam/Desktop/AI - A/character_test.py", line 62, in main
+    window = CharacterOnlyWindow(settings=settings)
+  File "/Users/akshay.kadam/Desktop/AI - A/ana/ui/character_only_window.py", line 51, in __init__
+    self._setup_theme()
+  File "/Users/akshay.kadam/Desktop/AI - A/ana/ui/character_only_window.py", line 431, in _setup_theme
+    self.setStyleSheet(self.stylesheet + additional_style)
+TypeError: unsupported operand type(s) for +: 'NoneType' and 'str'
+
+2025-06-08 01:35:33,894 - CharacterTest - INFO - Loading modules...
+2025-06-08 01:35:34,047 - CharacterTest - INFO - Modules loaded successfully
+2025-06-08 01:35:34,157 - CharacterTest - DEBUG - Loading configuration...
+2025-06-08 01:35:34,157 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 01:35:34,157 - CharacterTest - INFO - Using custom character path: character_test
+2025-06-08 01:35:34,157 - CharacterTest - DEBUG - Creating character window...
+2025-06-08 01:35:34,157 - CharacterTest - ERROR - Error during initialization: setup_theme() got an unexpected keyword argument 'invert_secondary'
+2025-06-08 01:35:34,158 - CharacterTest - ERROR - Traceback (most recent call last):
+  File "/Users/akshay.kadam/Desktop/AI - A/character_test.py", line 62, in main
+    window = CharacterOnlyWindow(settings=settings)
+  File "/Users/akshay.kadam/Desktop/AI - A/ana/ui/character_only_window.py", line 51, in __init__
+    self._setup_theme()
+  File "/Users/akshay.kadam/Desktop/AI - A/ana/ui/character_only_window.py", line 384, in _setup_theme
+    theme_stylesheet = qdarktheme.setup_theme(
+TypeError: setup_theme() got an unexpected keyword argument 'invert_secondary'
+
+2025-06-08 01:36:05,789 - CharacterTest - INFO - Loading modules...
+2025-06-08 01:36:05,924 - CharacterTest - INFO - Modules loaded successfully
+2025-06-08 01:36:06,053 - CharacterTest - DEBUG - Loading configuration...
+2025-06-08 01:36:06,054 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 01:36:06,054 - CharacterTest - INFO - Using custom character path: character_test
+2025-06-08 01:36:06,054 - CharacterTest - DEBUG - Creating character window...
+2025-06-08 01:36:06,082 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character_test
+2025-06-08 01:36:06,129 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 01:36:06,129 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 01:36:07,241 - Ana.CharacterOnlyWindow - WARNING - No Health API key found. Health integration disabled.
+2025-06-08 01:36:07,241 - Ana.CharacterOnlyWindow - INFO - Character-only window initialized
+2025-06-08 01:36:07,344 - CharacterTest - INFO - Character test window started successfully
+2025-06-08 01:36:44,218 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:37:36,074 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:37:38,656 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:37:45,427 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:37:53,528 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:38:03,766 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:38:09,415 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:38:34,228 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:38:55,087 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:43:37,845 - CharacterTest - INFO - Loading modules...
+2025-06-08 01:43:38,007 - CharacterTest - INFO - Modules loaded successfully
+2025-06-08 01:43:38,188 - CharacterTest - DEBUG - Loading configuration...
+2025-06-08 01:43:38,189 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 01:43:38,189 - CharacterTest - INFO - Using custom character path: character_test
+2025-06-08 01:43:38,189 - CharacterTest - DEBUG - Creating character window...
+2025-06-08 01:43:38,224 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character_test
+2025-06-08 01:43:38,270 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 01:43:38,270 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 01:43:38,365 - Ana.CharacterOnlyWindow - WARNING - No Health API key found. Health integration disabled.
+2025-06-08 01:43:38,365 - Ana.CharacterOnlyWindow - INFO - Character-only window initialized
+2025-06-08 01:43:38,472 - CharacterTest - INFO - Character test window started successfully
+2025-06-08 01:44:09,880 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:44:27,707 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:45:00,454 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:45:28,986 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:46:16,685 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:46:58,786 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:47:55,670 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:48:49,634 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:50:59,282 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:51:29,902 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:51:52,280 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:52:06,558 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:52:12,208 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:52:21,836 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:52:48,144 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:53:24,175 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:54:29,936 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:54:32,000 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:55:05,672 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:55:36,544 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:55:56,812 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:55:59,921 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:56:12,483 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:56:28,884 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:56:41,332 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:57:52,455 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:58:34,996 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 01:58:44,651 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 01:58:47,972 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 01:59:06,590 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 02:01:33,823 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 02:02:21,786 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:02:23,506 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 02:02:25,338 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 02:02:42,931 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 02:03:28,827 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:04:04,324 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 02:04:28,996 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:04:33,427 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 02:05:00,452 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:05:32,446 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:05:47,717 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 02:05:51,252 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:06:04,352 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:06:23,091 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:06:42,829 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:06:49,548 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:07:07,030 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:07:11,528 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:07:43,644 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 02:08:08,632 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 02:08:49,701 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:09:07,229 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:10:19,629 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 02:12:27,822 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 02:12:46,463 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 02:12:59,904 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:13:00,720 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 02:13:01,642 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 02:13:01,742 - Ana.CharacterView - INFO - Character emotion set to: happy
+2025-06-08 02:13:16,279 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 02:14:05,206 - CharacterTest - INFO - Loading modules...
+2025-06-08 02:14:05,371 - CharacterTest - INFO - Modules loaded successfully
+2025-06-08 02:14:05,534 - CharacterTest - DEBUG - Loading configuration...
+2025-06-08 02:14:05,535 - Ana.Config - INFO - Settings loaded from /Users/akshay.kadam/Desktop/AI - A/ana/config/settings.json
+2025-06-08 02:14:05,535 - CharacterTest - INFO - Using custom character path: character_test
+2025-06-08 02:14:05,535 - CharacterTest - DEBUG - Creating character window...
+2025-06-08 02:14:05,568 - Ana.CharacterView - INFO - Loading character assets from: /Users/akshay.kadam/Desktop/AI - A/ana/assets/character_test
+2025-06-08 02:14:05,607 - Ana.CharacterView - INFO - Character assets loaded successfully
+2025-06-08 02:14:05,607 - Ana.CharacterView - INFO - Character view initialized
+2025-06-08 02:14:05,687 - Ana.CharacterOnlyWindow - WARNING - No Health API key found. Health integration disabled.
+2025-06-08 02:14:05,687 - Ana.CharacterOnlyWindow - INFO - Character-only window initialized
+2025-06-08 02:14:05,789 - CharacterTest - INFO - Character test window started successfully
+2025-06-08 02:14:18,634 - Ana.CharacterOnlyWindow - INFO - Developer mode: enabled
+2025-06-08 02:14:30,484 - Ana.CharacterView - INFO - Character emotion set to: neutral
+2025-06-08 02:14:33,464 - Ana.CharacterView - INFO - Character emotion set to: thinking
+2025-06-08 02:14:38,509 - Ana.CharacterView - INFO - Character emotion set to: neutral
